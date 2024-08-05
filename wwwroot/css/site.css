@@ -1,0 +1,102 @@
+html {
+    width: 100%;
+    height: 100%;
+    background-size:100% 100%;
+    background-image: url('../image/blur-background.jpg');
+    background-repeat: no-repeat;
+}
+
+* {
+    font-size: 20px;
+    font-family: 'Roboto';
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+body {
+    width: 100%;
+    height: 100%;            
+}
+
+a {
+    text-decoration: none;
+}
+.form-div{
+    display: flex;
+    justify-content: center;    
+    margin-top: 60px;
+}
+.form-inside {
+    background: rgba(175, 175, 175, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(175, 175, 175, 0.3);
+    border-radius: 30px;
+    border-color: black;
+    flex-direction: column;
+    padding: 25px 50px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.errormsg {    
+    background-color: transparent;
+    color: red;
+}
+.error::before {
+    width: 0;
+    height: 0;       
+}
+
+.div2 {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column ;
+}
+.div3{
+    padding:0 0 20px 0;
+}
+
+h1 {
+    font-family: 'Times New Roman';
+    font-size: 72px;
+}
+
+h3 {
+    font-size: 30px;
+    text-align: center;
+    margin: 0 0 15px 0;
+}
+
+form {
+    margin: 50px 0px;
+    display: flex;
+    flex-direction: column;
+    display: inline-block;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 20px;
+    margin: 25px 0 0 0;
+}
+
+button {
+    padding: 10px;
+    background: transparent;
+    color: black;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    /* width: 200px; */
+    margin: 15px 0 0 0;
+}
+
+    button:hover {
+        color: black;
+        background: rgb(150, 212, 199);
+    }

@@ -23,7 +23,7 @@ document.getElementById("submitLogin").addEventListener("click", async e => {
         // сохраняем в хранилище sessionstorage значение ключа
         sessionStorage.setItem("TokenKey", data.accessToken);
 
-        window.location.replace("http://localhost/Home");
+        window.location.replace("http://localhost/");
     }
     else
     {

@@ -22,7 +22,7 @@ document.getElementById("submitRegister").addEventListener("click", async e => {
     {
         login: document.getElementById("login").value,
         password: pass,
-        email: document.getElementById("email").value
+        mail: document.getElementById("email").value
     }
 
     const response = await fetch("/api/auth/Register", {

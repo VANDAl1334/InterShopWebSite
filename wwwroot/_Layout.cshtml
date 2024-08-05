@@ -1,21 +1,23 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="ru">
 
 <head>
     <title>InterShop</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../css/site.css" />
-    <link rel="stylesheet" href="../css/Layout.css" />
-    <link rel="icon" href="./image/favicon.ico" type="image/x-icon" />
+    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/InterShop.styles.css" asp-append-version="true" />
+    <link rel="icon" href="~/image/favicon.ico" type="image/x-icon"/>
+
+    @* <link rel="stylesheet" href="~/css/_Layout.cshtml.css" asp-append-version="true"/> *@
 </head>
 
 <body>
-    <header>
+    <header b-6hvzmi5wuz="">
         <div class="header-content">
             <div class="logo">
-                <img src="" />
+                <img src=""/>
                 <a href="/Catalog/Index">InterShop</a>
             </div>
             <nav>
@@ -27,39 +29,14 @@
                 </ul>
             </nav>
             <div class="header-actions">
-                <a>Номер горячей линии</a><br />
+                <a>Номер горячей линии</a><br/>
                 <a>+7-042-431-32-12</a>
             </div>
         </div>
     </header>
 
-    <div class="form-div">
-        <form>
-            <div class="form-inside">
-                <h3>Регистрация</h3>
-                <div>
-                    <span class="errormsg"></span>
-                    <input id="login" placeholder="Логин">
-                </div>
-                <div class="div2">
-                    <span class="errormsg"></span>
-                    <input id="email" placeholder="Почта" />
-                </div>
-                <div class="div2">
-                    <span class="errormsg"></span>
-                    <input id="password" type="password" placeholder="Пароль" />
-                </div>
-                <div class="div2">
-                    <span asp-validation-for="ConfirmPassword" class="errormsg"></span>
-                    <input id="confirmPassword" type="password" placeholder="Подтверждение пароля" />
-                </div>
-                <button type="submit" id="submitRegister">Зарегистрироваться</button>
-                <a href="/Login">
-                    <p>Есть аккаунт</p>
-                </a>
-            </div>
-        </form>
-    </div>
+    @RenderBody()
+    
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -73,11 +50,11 @@
                 <h4>Скачайте мобильное приложение</h4>
                 <div style="display: flex; flex-direction:row;">
                     <div style="display: flex; flex-direction:row; background:grey; margin-right:10px">
-                        <img src="" />
+                        <img src=""/>
                         <p>App Store</p>
                     </div>
                     <div style="display: flex; flex-direction:row; background:grey; ">
-                        <img src="" />
+                        <img src=""/>
                         <p>Play Market</p>
                     </div>
                 </div>
@@ -112,8 +89,11 @@
             <p>&copy; 2024 - InterShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></p>
         </div>
     </footer>
-</body>
 
-<script src="../../js/register.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
 
 </html>
