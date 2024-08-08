@@ -2,19 +2,41 @@ document.getElementById("submitRegister").addEventListener("click", async e => {
     e.preventDefault();
 
 
-
-    // Валидозация полей
-    var errors = validateFields();
-
-    if (errors.length > 0) {
-        var errrorMessage = "";
-        errors.forEach(element => {
-            errrorMessage += element + "\n";
-        });
-
-        alert(errrorMessage);
+    let password = document.getElementById("password");
+    var confirmPassword = document.getElementById("confirmPassword").value;
+    var login = document.getElementById("login").value;
+    var email = document.getElementById("email");
+    // Проверка соответствия введённых данных
+    if (login.trim().length == 0) {
+        errmsgLogin.innerText = "Заполните поле Логин"
         return;
     }
+    else
+        errmsgLogin.innerText = ""
+    if (email.value.trim().length == 0) {
+        errmsgEmail.innerText = "Заполните поле Email"
+        return;
+    }
+    else {
+        errmsgEmail.innerText = ""
+        if (validateEmail(email))
+            return;
+    }
+    if (password.value.trim().length == 0) {
+        errmsgPassword.innerText = "Заполните поле Пароль"
+        return;
+    }
+    else {
+        errmsgPassword.innerText = ""
+        if(validatePassword())
+            return;
+    }
+    if (password.value !== confirmPassword) {
+        errmsgPassword.innerText = "Пароли не совпадают"
+        return;
+    }
+    else
+        errmsgPassword.innerText = ""
 
     var pass = btoa(String.fromCharCode.apply(null, new Uint8Array(await window.crypto.subtle.digest("SHA-256", new TextEncoder().encode(document.getElementById("password").value)))));
 
@@ -26,43 +48,19 @@ document.getElementById("submitRegister").addEventListener("click", async e => {
     }
 
     const response = await fetch("/api/auth/Register", {
-            method: "POST",
-            headers: { "Accept": "application/json", "Content-Type": "application/json" },
-            body: JSON.stringify(obj)
-        }
+        method: "POST",
+        headers: { "Accept": "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify(obj)
+    }
     );
 
-    if(response.ok)
-    {
+    if (response.ok) {
+        location.origin
         alert("Вы успешно зарегистрировались!");
-        window.location.replace("http://localhost/Login");
+        window.location.href = `${location.origin}/Login`;
     }
-    else
-    {
+    else {
         console.log("Status: " + response.status);
     }
 })
 
-function validateFields()
-{
-    let errors = [];
-
-    var password = document.getElementById("password").value;
-    var confirmPassword = document.getElementById("confirmPassword").value;
-
-    var login = document.getElementById("login").value;
-
-    var email = document.getElementById("email").value;
-
-    // Проверка соответствия введённых паролей
-    if (password.trim().length == 0)
-        errors.push("Заполните поле Пароль")
-    if (password !== confirmPassword)
-        errors.push("Пароли не совпадают");
-    if (login.trim().length == 0)
-        errors.push("Заполните поле Логин")
-    if (email.trim().length == 0)
-        errors.push("Заполните поле Email")
-
-    return errors;
-} 

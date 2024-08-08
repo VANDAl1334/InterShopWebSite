@@ -37,20 +37,20 @@
         <form>
             <div class="form-inside">
                 <h3>Регистрация</h3>
-                <div>
-                    <span class="errormsg"></span>
+                <div class="div2">
+                    <span id="errmsgLogin" for="login" class="errormsg"></span>
                     <input id="login" placeholder="Логин">
                 </div>
                 <div class="div2">
-                    <span class="errormsg"></span>
+                    <span id="errmsgEmail" for="email" class="errormsg"></span>
                     <input id="email" placeholder="Почта" />
                 </div>
                 <div class="div2">
-                    <span class="errormsg"></span>
+                    <span id="errmsgPassword" for="password" class="errormsg"></span>
                     <input id="password" type="password" placeholder="Пароль" />
                 </div>
                 <div class="div2">
-                    <span asp-validation-for="ConfirmPassword" class="errormsg"></span>
+                    <!-- <span id="errmsgPasswordConf" class="errormsg"></span> -->
                     <input id="confirmPassword" type="password" placeholder="Подтверждение пароля" />
                 </div>
                 <button type="submit" id="submitRegister">Зарегистрироваться</button>
@@ -114,6 +114,8 @@
     </footer>
 </body>
 
-<script src="../../js/register.js"></script>
+<script src="../js/register.js"></script>
+<script src="../js/IsValidMail.js"></script>
+<script src="../js/IsValidPassword.js"></script>
 
 </html>

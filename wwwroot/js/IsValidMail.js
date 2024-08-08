@@ -1,22 +1,19 @@
-const validateEmail = (email) => {
+let validatemail = (email) => {
     return email.match(
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
 };
 
-const validate = () => {
-    const $result = $('result');
-    const email = $('Mail').val();
-    $result.text('');
+const validateEmail = (email) => {
+    let errmsg = document.getElementById("errmsgEmail");
 
-    if (validateEmail(email)) {
-        $result.text(email + ' is valid.'); 
-        $result.css('color', 'green');
+    if (validatemail(email.value)) {
+        errmsg.innerText = "";
+        email.style.background = "white";
+        return false;
     } else {
-        $result.text(email + ' is invalid.');
-        $result.css('color', 'red');
+        errmsg.innerText = "Введен неверный формат почты";
+        email.style.background = "red";
+        return true;
     }
-    return false;
 }
-
-$('Mail').on('input', validate);
