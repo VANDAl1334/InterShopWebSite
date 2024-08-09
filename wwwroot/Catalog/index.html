@@ -2,14 +2,19 @@
 <html>
 
 <head>
-    <title>InterShop | Вход</title>
+    <title>InterShop | Каталог</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/site.css" />
     <link rel="stylesheet" href="../css/Layout.css" />
+    <link rel="stylesheet" href="../css/catalog.css" />
     <link rel="icon" href="../icons/favicon.ico" type="image/x-icon" />
 </head>
+
+<style>
+
+</style>
 
 <body
     style="display: flex; flex-direction: column; overflow: visible; flex-wrap: nowrap;justify-content: space-between;">
@@ -52,19 +57,7 @@
             </div>
         </div>
     </header>
-    <div class="form-div">
-        <form>
-            <div class="form-inside">
-                <h2>Вход</h2>
-                <span class="errormsg"></span><br />
-                <input placeholder="Логин" autocomplete="off" type="text" id="login" /><br />
-                <input placeholder="Пароль" autocomplete="off" type="password" id="password" /><br />
-                <input type="submit" id="submitLogin" value="Войти" />
-                <a href="/Register">
-                    <p>Регистрация</p>
-                </a>
-            </div>
-        </form>
+    <div class="results" id="results">
     </div>
     <footer>
         <div class="footer-content">
@@ -119,7 +112,7 @@
         </div>
     </footer>
 </body>
-<script src="../js/login.js"></script>
+<script src="../js/catalog.js"></script>
 <script src="../js/site.js"></script>
 
 </html>
