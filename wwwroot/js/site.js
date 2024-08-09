@@ -1,4 +1,20 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿document.getElementById("favourite").addEventListener("click", async e => {
+    e.preventDefault();
 
-// Write your JavaScript code.
+    var newLocation = window.location.protocol + '//' + window.location.host + "/Favourite";
+    window.location.href = newLocation;
+})
+
+document.getElementById("basket").addEventListener("click", async e => {
+    e.preventDefault();
+
+    var newLocation = window.location.protocol + '//' + window.location.host + "/Basket";
+    window.location.href = newLocation;
+})
+
+document.getElementById("profile").addEventListener("click", async e => {
+    e.preventDefault();
+
+    var newLocation = window.location.protocol + '//' + window.location.host + "/Profile";
+    window.location.href = newLocation;
+})
