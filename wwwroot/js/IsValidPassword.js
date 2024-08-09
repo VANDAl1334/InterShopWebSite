@@ -1,8 +1,3 @@
-let validatepass = (password) => {
-    return password.match(
-        /"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"/u
-    );
-}
 const validatePassword = () => {
     let errmsg = document.getElementById("errmsgPassword");
     //let allah = new RegExp("^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&? ]).*$")    

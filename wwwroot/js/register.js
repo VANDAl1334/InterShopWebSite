@@ -28,7 +28,7 @@ document.getElementById("submitRegister").addEventListener("click", async e => {
     }
     else {
         errmsgPassword.innerText = ""
-        if(validatePassword())
+        if (validatePassword())
             return;
     }
     if (password.value !== confirmPassword) {
@@ -37,29 +37,37 @@ document.getElementById("submitRegister").addEventListener("click", async e => {
     }
     else
         errmsgPassword.innerText = ""
-
+    let loginJson = { login: login}
+    const responseLoginExists = await fetch("/api/auth/LoginExists", {
+        method: "POST",
+        headers: { "Accept": "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify(loginJson)
+    });
+    if (responseLoginExists.ok) {        
+        errmsgLogin.innerText = "Неверные логин или пароль";
+        return;
+    }
     var pass = btoa(String.fromCharCode.apply(null, new Uint8Array(await window.crypto.subtle.digest("SHA-256", new TextEncoder().encode(document.getElementById("password").value)))));
 
-    const obj =
+    const user =
     {
         login: document.getElementById("login").value,
         password: pass,
         mail: document.getElementById("email").value
     }
 
-    const response = await fetch("/api/auth/Register", {
+    let response = await fetch("/api/auth/Register", {
         method: "POST",
         headers: { "Accept": "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify(obj)
-    }
-    );
+        body: JSON.stringify(user)
+    });
 
-    if (response.ok) {
-        location.origin
+    if (response.ok) {        
         alert("Вы успешно зарегистрировались!");
         window.location.href = `${location.origin}/Login`;
     }
     else {
+        errmsgLogin.innerText = await ParseError(response);
         console.log("Status: " + response.status);
     }
 })
