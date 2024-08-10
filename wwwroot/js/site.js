@@ -1,20 +1,16 @@
 ﻿document.getElementById("favourite").addEventListener("click", async e => {
     e.preventDefault();
 
-    var newLocation = window.location.protocol + '//' + window.location.host + "/Favourite";
-    window.location.href = newLocation;
+    window.location.href = `${location.origin}/Favourite`;
 })
 
 document.getElementById("basket").addEventListener("click", async e => {
     e.preventDefault();
-
-    var newLocation = window.location.protocol + '//' + window.location.host + "/Basket";
-    window.location.href = newLocation;
+    window.location.href = `${location.origin}/Basket`;
 })
 
 document.getElementById("profile").addEventListener("click", async e => {
     e.preventDefault();
 
-    var newLocation = window.location.protocol + '//' + window.location.host + "/Profile";
-    window.location.href = newLocation;
+    window.location.href = `${location.origin}/Profile`;
 })

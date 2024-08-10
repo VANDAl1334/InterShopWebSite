@@ -1,19 +1,19 @@
-let validatemail = (email) => {
-    return email.match(
+let validatemail = (mail) => {
+    return mail.match(
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
 };
 
-const validateEmail = (email) => {
-    let errmsg = document.getElementById("errmsgEmail");
+const validateMail = (mail) => {
+    let errmsg = document.getElementById("errmsgMail");
 
-    if (validatemail(email.value)) {
+    if (validatemail(mail.value)) {
         errmsg.innerText = "";
-        email.style.background = "white";
+        mail.style.background = "white";
         return false;
     } else {
         errmsg.innerText = "Введен неверный формат почты";
-        email.style.background = "red";
+        mail.style.background = "red";
         return true;
     }
 }
