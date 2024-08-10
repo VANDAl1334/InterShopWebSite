@@ -1,13 +1,8 @@
-// Загрузка товаров
-async function loadProducts(nameFilter)
+// Загрузка товаров по скидке
+async function loadDiscounts()
 {
-    nameFilter = nameFilter === undefined ? "" : nameFilter;
-    const search = document.getElementById("tb_search");
-    search.value = nameFilter;
 
-    deletePreviousResults();
-
-    const response = await fetch(`/api/Product?nameFilter=${nameFilter}`, {
+    const response = await fetch(`/api/Product?discountOnly=true`, {
         method: "GET",
         headers: {
             "Accept": "application/json"
@@ -17,35 +12,20 @@ async function loadProducts(nameFilter)
     if(response.ok)
     {
         data = await response.json();
-        generateProducts(data);
+        generateDiscounts(data);
     }
 }
 
-// Удаление предыдущих результатов 
-function deletePreviousResults()
+// Создание списка товаров по скидке
+async function generateDiscounts(jsonData)
 {
-    const root = document.getElementById("results");
-
-    root.innerHTML = "";
-}
-
-// Создание списка товаров
-async function generateProducts(jsonData)
-{
-    var root = document.getElementById("results");
+    var root = document.getElementById("content");
 
     // Строка "Результаты поиска"
     const resultString = document.createElement("p");
     resultString.setAttribute("style", "font-size: 30px; margin: 10px;");
-    resultString.innerHTML = "Результаты поиска";
+    resultString.innerHTML = "Акции";
     root.appendChild(resultString);
-
-    // Количество найденых товаров
-    const result = document.createElement("p");
-    result.innerHTML = `Всего найдено ${jsonData.length} товаров`;
-    result.setAttribute("style", "margin: 10px");
-
-    root.append(result);
 
     for(let i = 0; i < jsonData.length; i++)
     {
@@ -125,10 +105,4 @@ async function generateProducts(jsonData)
     }
 }
 
-// Загружаем товары при загрузке страницы
-loadProducts(getParam("nameFilter"));
-
-function getParam(name){
-    if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
-       return decodeURIComponent(name[1]);
- }
+loadDiscounts();

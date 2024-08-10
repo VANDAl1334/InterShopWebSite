@@ -38,7 +38,6 @@ a {
 } */
 
 footer {
-  margin-top: 20px;
   background-color: #333;
   color: #fff;
   padding: 40px 0;
@@ -144,13 +143,11 @@ nav ul li a:hover {
   background-color: #0056b3;
 }
 
-.logo
-{
+.logo {
   display: flex;
 }
 
-.logo img
-{
+.logo img {
   width: 50px;
   height: fit-content;
 }
@@ -192,11 +189,25 @@ nav ul li a:hover {
   display: flex;
   border-radius: 5px;
   border: 1px solid;
-  width: 200px;
-  height: 50px;
+  width: 140px;
+  height: 40px;
   flex-direction: row;
   justify-content: space-around;
   padding: 5px;
   margin: 10px;
 }
 
+.header-button p {
+  height: 100%;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  margin: 0px;
+}
+
+.header-button img {
+  align-self: center;
+  width: 25px;
+  height: 25px;
+}
