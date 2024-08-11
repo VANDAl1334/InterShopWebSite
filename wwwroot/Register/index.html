@@ -11,24 +11,44 @@
     <link rel="icon" href="./image/favicon.ico" type="image/x-icon" />
 </head>
 
-<body>
+<body
+    style="display: flex; flex-direction: column; overflow: visible; flex-wrap: nowrap;justify-content: space-between;">
     <header>
         <div class="header-content">
-            <div class="logo">
-                <img src="" />
-                <a href="/Catalog/Index">InterShop</a>
+            <div class="up-level">
+                <div class="logo">
+                    <img src="../icons/Logo.png" />
+                    <a href="/">InterShop</a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="/Discounts">Акции</a></li>
+                        <li><a href="/Catalog">Каталог</a></li>
+                        <li><a href="/Shops">Магазины</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <a>Номер горячей линии</a><br />
+                    <a>+7-042-431-32-12</a>
+                </div>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="/Catalog/Index">Главная</a></li>
-                    <li><a href="#">О нас</a></li>
-                    <li><a href="#">Услуги</a></li>
-                    <li><a href="#">Контакты</a></li>
-                </ul>
-            </nav>
-            <div class="header-actions">
-                <a>Номер горячей линии</a><br />
-                <a>+7-042-431-32-12</a>
+            <div class="down-level">
+                <div style="display: flex; align-self: center;">
+                    <input id="tb_search" type="text">
+                    <button id="btn_search"></button>
+                </div>
+                <button class="header-button" id="favourite">
+                    <p>Избранное</p>
+                    <img src="../icons/Favourite.png">
+                </button>
+                <button class="header-button" id="basket">
+                    <p>Корзина</p>
+                    <img src="../icons/Basket.png">
+                </button>
+                <button class="header-button" id="profile">
+                    <p>Профиль</p>
+                    <img src="../icons/Profile.png">
+                </button>
             </div>
         </div>
     </header>
@@ -95,7 +115,7 @@
                 <ul>
                     <li>Адрес магазина: Улица Примерная, 123</li>
                     <li>Телефон горячей линии: +7 (123) 456-78-90</li>
-                    <li>Следите за акциями и навинками Mail: info@example.com</li>
+                    <li>Следите за акциями и новинками Email: info@example.com</li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -117,5 +137,6 @@
 <script src="../js/IsValidMail.js"></script>
 <script src="../js/IsValidPassword.js"></script>
 <script src="../js/ParseErrorModel.js"></script>
+<script src="../js/site.js"></script>
 
 </html>
