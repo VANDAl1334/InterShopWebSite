@@ -9,27 +9,28 @@
     <link rel="stylesheet" href="../css/site.css" />
     <link rel="stylesheet" href="../css/Layout.css" />
     <link rel="stylesheet" href="../css/catalog.css" />
-    <link rel="icon" href="../icons/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="../icons/logo-icon.png" type="image/x-icon" />
 </head>
 
 <style>
 
 </style>
 
-<body
-    style="display: flex; flex-direction: column; overflow: visible; flex-wrap: nowrap;justify-content: space-between;">
+<body>
     <header>
         <div class="header-content">
             <div class="up-level">
-                <div class="logo">
-                    <img src="../icons/Logo.png" />
-                    <a href="/">InterShop</a>
-                </div>
+                <a href="/">
+                    <div class="logo">
+                        <img src="../icons/Logo.png" />
+                        <p>InterShop</p>
+                    </div>
+                </a>
                 <nav>
                     <ul>
-                        <li><a href="/Discounts">Акции</a></li>
-                        <li><a href="/Catalog">Каталог</a></li>
-                        <li><a href="/Shops">Магазины</a></li>
+                        <li><a id="Discounts" href="/Discounts">Акции</a></li>
+                        <li><a id="Catalog" href="/Catalog">Каталог</a></li>
+                        <li><a id="Shops" href="/Shops">Магазины</a></li>
                     </ul>
                 </nav>
                 <div class="header-actions">
@@ -113,6 +114,6 @@
     </footer>
 </body>
 <script src="../js/catalog.js"></script>
-<script src="../js/site.js"></script>
+<script src="../js/Layout.js"></script>
 
 </html>

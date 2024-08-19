@@ -9,11 +9,10 @@
     <link rel="stylesheet" href="./css/site.css" />
     <link rel="stylesheet" href="./css/Layout.css" />
     <link rel="stylesheet" href="./css/index.css" />
-    <link rel="icon" href="./icons/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="./icons/logo-icon.png" type="image/x-icon" />
 </head>
 
-<body
-    style="display: flex; flex-direction: column; overflow: visible; flex-wrap: nowrap;justify-content: space-between;">
+<body>
     <header>
         <div class="header-content">
             <div class="up-level">
@@ -23,9 +22,9 @@
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="/Discounts">Акции</a></li>
-                        <li><a href="/Catalog">Каталог</a></li>
-                        <li><a href="/Shops">Магазины</a></li>
+                        <li><a id="Discounts" href="/Discounts">Акции</a></li>
+                        <li><a id="Catalog" href="/Catalog">Каталог</a></li>
+                        <li><a id="Shops" href="/Shops">Магазины</a></li> 
                     </ul>
                 </nav>
                 <div class="header-actions">
@@ -109,7 +108,8 @@
     </footer>
 </body>
 
-<script src="./js/site.js"></script>
-<script src="./js/index.js"></script>
+<script src="../js/Layout.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/catalog.js"></script>
 
 </html>

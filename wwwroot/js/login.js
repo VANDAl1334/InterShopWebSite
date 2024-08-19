@@ -1,34 +1,61 @@
 var tokenKey = "";
-
+document.getElementById("showPassword").addEventListener("change", () => {
+    let btnShow = document.getElementById("showPassword");
+    let password = document.getElementById("password");
+    if (btnShow.checked) {
+        password.type = 'text';
+        btnShow.style.background = '#2c2c2c';
+    }
+    else {
+        password.type = 'password';
+        btnShow.style.background = 'transparent';
+    }
+});
 document.getElementById("submitLogin").addEventListener("click", async e => {
     e.preventDefault();
-
-    const obj =
+    let login = document.getElementById("login");
+    let password = document.getElementById("password");
+    let errmsgPass = document.getElementById("errmsgPassAuth")
+    let errmsgLogin = document.getElementById("errmsgLoginAuth")
+    if (!login.value.trim()) {
+        errmsgLogin.innerText = "Обязательное поле"
+        return;
+    }
+    else
+        errmsgLogin.innerText = "";
+    if (!password.value.trim()) {
+        errmsgPass.innerText = "Обязательное поле"
+        return;
+    }
+    else
+        errmsgPass.innerText = "";
+    const authUser =
     {
-        login: document.getElementById("login").value,
-        password: btoa(String.fromCharCode.apply(null, new Uint8Array(await window.crypto.subtle.digest("SHA-256", new TextEncoder().encode(document.getElementById("password").value)))))
+        login: login.value,
+        password: btoa(String.fromCharCode.apply(null, new Uint8Array(await window.crypto.subtle.digest("SHA-256", new TextEncoder().encode(password.value)))))
     }
 
-    const response = await fetch("/api/auth/Login", {
+    const responseAuth = await fetch("/api/auth/Login", {
         method: "POST",
         headers: { "Accept": "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify(obj)
+        body: JSON.stringify(authUser)
     });
 
     // если запрос прошел нормально
-    if(response.ok === true)
-    {
+    if (responseAuth.ok) {
         // получаем данные
-        const data = await response.json();
+        const data = await responseAuth.json();
         // сохраняем в хранилище sessionstorage значение ключа
+        // document.cookie = `login=${data.userData.login}; mail=${data.userData.mail}`
         sessionStorage.setItem("TokenKey", data.accessToken);
-
-        window.location.replace("/");
+        location.href = location.origin;
     }
-    else
-    {
-        console.log("Status: ", response.status);
-        alert("Некорректный логин или пароль!");
+    else {
+        console.log(responseAuth);
+        let boolerr = await ParseError(responseAuth);
+        if (boolerr)
+            errmsgLogin.innerText = "Неверные логин или пароль";
+        return;
     }
 })
 

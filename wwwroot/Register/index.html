@@ -2,24 +2,25 @@
 <html>
 
 <head>
-    <title>InterShop</title>
+    <title>InterShop | Регистрация</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/site.css" />
     <link rel="stylesheet" href="../css/Layout.css" />
-    <link rel="icon" href="./image/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="../icons/logo-icon.png" type="image/x-icon" />
 </head>
 
-<body
-    style="display: flex; flex-direction: column; overflow: visible; flex-wrap: nowrap;justify-content: space-between;">
+<body>
     <header>
         <div class="header-content">
             <div class="up-level">
-                <div class="logo">
-                    <img src="../icons/Logo.png" />
-                    <a href="/">InterShop</a>
-                </div>
+                <a href="/">
+                    <div class="logo">
+                        <img src="../icons/Logo.png" />
+                        <p>InterShop</p>
+                    </div>
+                </a>
                 <nav>
                     <ul>
                         <li><a href="/Discounts">Акции</a></li>
@@ -34,7 +35,7 @@
             </div>
             <div class="down-level">
                 <div style="display: flex; align-self: center;">
-                    <input id="tb_search" type="text">
+                    <input id="tb_search" placeholder="Поиск" type="text">
                     <button id="btn_search"></button>
                 </div>
                 <button class="header-button" id="favourite">
@@ -72,7 +73,7 @@
                 <div class="div2">
                     <input id="confirmPassword" type="password" placeholder="Подтверждение пароля" />
                 </div>
-                <button type="submit" id="submitRegister">Зарегистрироваться</button>
+                <button id="submitRegister">Зарегистрироваться</button>
                 <a href="/Login">
                     <p>Есть аккаунт</p>
                 </a>
@@ -115,7 +116,7 @@
                 <ul>
                     <li>Адрес магазина: Улица Примерная, 123</li>
                     <li>Телефон горячей линии: +7 (123) 456-78-90</li>
-                    <li>Следите за акциями и новинками Email: info@example.com</li>
+                    <li>Следите за акциями и навинками Mail: info@example.com</li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -134,9 +135,8 @@
 </body>
 
 <script src="../js/register.js"></script>
-<script src="../js/IsValidMail.js"></script>
-<script src="../js/IsValidPassword.js"></script>
+<script src="../js/Layout.js"></script>
+<script src="../js/catalog.js"></script>
 <script src="../js/ParseErrorModel.js"></script>
-<script src="../js/site.js"></script>
 
 </html>

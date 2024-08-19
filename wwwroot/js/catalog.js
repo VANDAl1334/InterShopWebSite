@@ -1,6 +1,5 @@
 // Загрузка товаров
-async function loadProducts(nameFilter)
-{
+async function loadProducts(nameFilter) {
     nameFilter = nameFilter === undefined ? "" : nameFilter;
     const search = document.getElementById("tb_search");
     search.value = nameFilter;
@@ -14,24 +13,21 @@ async function loadProducts(nameFilter)
         }
     });
 
-    if(response.ok)
-    {
+    if (response.ok) {
         data = await response.json();
         generateProducts(data);
     }
 }
 
 // Удаление предыдущих результатов 
-function deletePreviousResults()
-{
+function deletePreviousResults() {
     const root = document.getElementById("results");
 
     root.innerHTML = "";
 }
 
 // Создание списка товаров
-async function generateProducts(jsonData)
-{
+async function generateProducts(jsonData) {
     var root = document.getElementById("results");
 
     // Строка "Результаты поиска"
@@ -47,8 +43,7 @@ async function generateProducts(jsonData)
 
     root.append(result);
 
-    for(let i = 0; i < jsonData.length; i++)
-    {
+    for (let i = 0; i < jsonData.length; i++) {
         // Контейнер результатов 
         const container = document.createElement("div");
         // В качестве id контейнера задаём id товара
@@ -60,7 +55,7 @@ async function generateProducts(jsonData)
         preview.setAttribute("src", `../images/products/${jsonData[i]["previewPath"]}`)
         preview.setAttribute("class", "productPreview");
         container.appendChild(preview);
-               
+
         // Название товара
         const name = document.createElement("p");
         name.innerHTML = `Название: ${jsonData[i]["name"]}`;
@@ -71,13 +66,13 @@ async function generateProducts(jsonData)
         description.innerHTML = `Описание: ${jsonData[i]["description"]}`;
         description.setAttribute("class", "productDescription");
 
-        container.appendChild(name);        
-        container.appendChild(description);   
-        
+        container.appendChild(name);
+        container.appendChild(description);
+
         // Кнопка добавления в избранное
         const toFavourite = document.createElement("button");
         toFavourite.setAttribute("class", "productFavourite");
-        
+
         container.appendChild(toFavourite);
 
         // Блок для цены и цены по скидке
@@ -86,24 +81,22 @@ async function generateProducts(jsonData)
 
         // Цена без скидки
         const cost = document.createElement("span");
-        
+
         var costValue = jsonData[i]["productVariants"][0]["priceHistories"][0]["price"];
         cost.innerHTML = `${costValue} руб.`;
         cost.setAttribute("class", "productCost");
         divCost.appendChild(cost);
 
         let lastDiscount = jsonData[i]["discountHistories"][0];
-        
+
         var costDisount;
         // Если существует хотя бы одна скидка
-        if(lastDiscount != undefined)
-        {
+        if (lastDiscount != undefined) {
             let lastDiscountValue = jsonData[i]["discountHistories"][0]["discount"];
             const currentDate = new Date();
-            
+
             // Проверяем вхождение текущей даты в диапазон скидки
-            if(currentDate >= new Date(lastDiscount["dateFrom"]) && currentDate <= new Date(lastDiscount["dateTo"]))
-            {
+            if (currentDate >= new Date(lastDiscount["dateFrom"]) && currentDate <= new Date(lastDiscount["dateTo"])) {
                 // Если скидка входит в диапазон (действует), то формируем тег для скидки
                 costDisount = document.createElement("span");
                 costDisount.innerHTML = `${costValue - costValue * (lastDiscountValue / 100)} руб.`;
@@ -111,8 +104,8 @@ async function generateProducts(jsonData)
                 cost.setAttribute("style", "color: rgb(180, 180, 180);text-decoration: line-through;");
                 divCost.appendChild(costDisount);
             }
-        }  
-        
+        }
+
         container.appendChild(divCost);
 
         // Кнопка "В корзину"
@@ -120,7 +113,7 @@ async function generateProducts(jsonData)
         btnBasket.innerHTML = "В корзину"
         btnBasket.setAttribute("class", "productToBasket");
         container.appendChild(btnBasket);
-                
+
         root.append(container);
     }
 }
@@ -128,7 +121,7 @@ async function generateProducts(jsonData)
 // Загружаем товары при загрузке страницы
 loadProducts(getParam("nameFilter"));
 
-function getParam(name){
-    if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
-       return decodeURIComponent(name[1]);
- }
+function getParam(name) {
+    if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
+        return decodeURIComponent(name[1]);
+}

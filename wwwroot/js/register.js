@@ -1,3 +1,51 @@
+const validatePassword = () => {
+    let errmsg = document.getElementById("errmsgPassword");
+    //let allah = new RegExp("^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&? ]).*$")    
+    errmsg.innerText = "";
+    // if (validatepass(password.value)) {
+    if (!/^.{9,}./.test(password.value)) {
+        errmsg.innerText = "Минимум 10 символов";
+        password.style.background = "red";
+        return true;
+    } else if (!/^(?=.*[a-z])(?=.*[A-Z]).*$/.test(password.value)) {
+        errmsg.innerText = "Верхний и нижний регистр букв";
+        password.style.background = "red";
+        return true;
+    } else if (!/[!-/:-@[-`{-~]/.test(password.value)) {
+        errmsg.innerText = "Требуются Спец символы";
+        password.style.background = "red";
+        return true;    
+    } else if(!/^.+\d.+$/.test(password.value)) {
+        errmsg.innerText = "Требуются цифры";
+        password.style.background = "red";
+        return true;
+    }    
+    else{
+        errmsg.innerText = "";
+        password.style.background = "white";
+        return false;
+    }
+}
+let validatemail = (mail) => {
+    return mail.match(
+        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
+const validateMail = (mail) => {
+    let errmsg = document.getElementById("errmsgMail");
+
+    if (validatemail(mail.value)) {
+        errmsg.innerText = "";
+        mail.style.background = "white";
+        return false;
+    } else {
+        errmsg.innerText = "Введен неверный формат почты";
+        mail.style.background = "red";
+        return true;
+    }
+}
+
 document.getElementById("submitRegister").addEventListener("click", async e => {
     e.preventDefault();
 
@@ -44,8 +92,8 @@ document.getElementById("submitRegister").addEventListener("click", async e => {
         body: JSON.stringify(loginJson)
     });
     if (!responseLoginExists.ok) {
-        let a = await ParseError(responseLoginExists);
-        if (a)
+        let boolerr = await ParseError(responseLoginExists);
+        if (boolerr)
             errmsgLogin.innerText = "Неверные логин или пароль";
         return;
     }

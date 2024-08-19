@@ -2,6 +2,7 @@ html {
     width: 100%;
     height: 100%;
     background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 * {
@@ -14,6 +15,7 @@ html {
 body {
     width: 100%;
     height: 100%;
+    margin:0;
 }
 
 a {
@@ -23,7 +25,7 @@ a {
 .form-div {
     display: flex;
     justify-content: center;
-    margin-top: 60px;
+    margin-top: 200px;
 }
 
 .form-inside {
@@ -39,6 +41,18 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.listDataProfile {
+    display: flex;
+    align-items: center;
+}
+
+.dataProfile {
+    display: inline-block;
+    padding: 10px;
+    background: gray;
+    border-radius: 36px;
 }
 
 .errormsg {
@@ -74,18 +88,22 @@ h3 {
 }
 
 form {
-    margin: 50px 0px;
     display: flex;
     flex-direction: column;
-    display: inline-block;
 }
-
+.divFromHeader{
+    margin-top: 200px;
+}
+#dataProfileList{
+    
+    align-self: left;
+}
 input {
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
     font-size: 20px;
     margin: 25px 0 0 0;
+    border-radius: 20px;
 }
 
 button {
@@ -93,13 +111,12 @@ button {
     background: transparent;
     color: black;
     border: 1px solid black;
-    border-radius: 4px;
+    border-radius: 15px;
     cursor: pointer;
-    /* width: 200px; */
     margin: 15px 0 0 0;
 }
 
 button:hover {
-    /* color: black; */
-    /* background: rgb(150, 212, 199); */
+    color: black;
+    background: rgb(150, 212, 199);
 }

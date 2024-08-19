@@ -42,6 +42,7 @@ footer {
   color: #fff;
   padding: 40px 0;
   width: 100%;
+  margin: 0;
 }
 
 .footer-content {
@@ -90,6 +91,7 @@ header {
   left: 0;
   width: 100%;
   background-color: #f8f8f8;
+  z-index: 1;
 }
 
 .header-content {
@@ -115,24 +117,24 @@ header {
 
 nav ul {
   display: flex;
+  justify-content: space-between;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-nav ul li {
-  margin-right: 20px;
-}
-
 nav ul li a {
-  color: #333;
+  color: #000000;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 26px;
   transition: color 0.3s ease;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 nav ul li a:hover {
-  color: #666;
+  background: #797979;
+  color: #ffffff;
 }
 
 .header-actions a {
@@ -140,16 +142,28 @@ nav ul li a:hover {
 }
 
 .header-actions .btn:hover {
-  background-color: #0056b3;
+  background-color: #a0a0a0;
+}
+
+.up-level a {
+  margin: 0;
+  align-self: center;
+  color: black;
+  margin: 10px;
 }
 
 .logo {
   display: flex;
 }
-
+.logo p{
+   margin: 10px;
+   font-weight: bold;
+   color: #2c2c2c;
+}
 .logo img {
   width: 50px;
   height: fit-content;
+  align-self: center;
 }
 
 .up-level {
@@ -177,12 +191,14 @@ nav ul li a:hover {
   width: 40px;
   height: 40px;
   margin: 0px;
+  border-radius: 15px;
 }
 
 #tb_search {
   width: 500px;
   height: 40px;
   margin: 0px;
+  padding: 15px;
 }
 
 .header-button {
@@ -195,6 +211,7 @@ nav ul li a:hover {
   justify-content: space-around;
   padding: 5px;
   margin: 10px;
+  border-radius: 10px;
 }
 
 .header-button p {

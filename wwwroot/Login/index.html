@@ -8,23 +8,24 @@
     <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/site.css" />
     <link rel="stylesheet" href="../css/Layout.css" />
-    <link rel="icon" href="../icons/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="../icons/logo-icon.png" type="image/x-icon" />
 </head>
 
-<body
-    style="display: flex; flex-direction: column; overflow: visible; flex-wrap: nowrap;justify-content: space-between;">
+<body>
     <header>
         <div class="header-content">
             <div class="up-level">
-                <div class="logo">
-                    <img src="../icons/Logo.png" />
-                    <a href="/">InterShop</a>
-                </div>
+                <a href="/">
+                    <div class="logo">
+                        <img src="../icons/Logo.png" />
+                        <p>InterShop</p>
+                    </div>
+                </a>
                 <nav>
                     <ul>
-                        <li><a href="/Discounts">Акции</a></li>
-                        <li><a href="/Catalog">Каталог</a></li>
-                        <li><a href="/Shops">Магазины</a></li>
+                        <li><a id="Discounts" href="/Discounts">Акции</a></li>
+                        <li><a id="Catalog" href="/Catalog">Каталог</a></li>
+                        <li><a id="Shops" href="/Shops">Магазины</a></li>
                     </ul>
                 </nav>
                 <div class="header-actions">
@@ -34,7 +35,7 @@
             </div>
             <div class="down-level">
                 <div style="display: flex; align-self: center;">
-                    <input id="tb_search" type="text">
+                    <input id="tb_search" type="text" placeholder="Поиск">
                     <button id="btn_search"></button>
                 </div>
                 <button class="header-button" id="favourite">
@@ -54,17 +55,25 @@
     </header>
     <div class="form-div">
         <form>
-            <div class="form-inside">
-                <h2>Вход</h2>
-                <span class="errormsg"></span><br/>
-                <input placeholder="Логин" autocomplete="off" type="text" id="login"/><br />                
-                <input placeholder="Пароль" autocomplete="off" type="password" id="password"/><br />
-                <input type="submit" id="submitLogin" value="Войти"/>
-                <a href="/Register">
+            <div class="form-inside" style="display: grid;grid-template-columns: auto auto;grid-template-rows: auto auto auto auto auto; justify-items: center;">
+                <h2 style="grid-row: 1;grid-column: 1 /2;align-self: center;">Вход</h2>
+                <div class="div2" style="grid-row: 2;">
+                    <span class="errormsg" id="errmsgLoginAuth" name="Login"></span><br />
+                    <input placeholder="Логин" autocomplete="off" type="text" id="login" /><br />
+                </div>
+                <div class="div2" style="grid-row: 3;">
+                    <span class="errormsg" id="errmsgPassAuth" name="Password"></span><br />
+                    <input placeholder="Пароль" autocomplete="off" type="password" id="password"><br />
+                </div>
+                <input type="checkbox" id="showPassword" style="width: 30px; height: 30px; grid-row: 3; ">
+                <button id="submitLogin" style="grid-row: 4; width: fit-content; padding: 10px 25px;">Войти</button>
+                <a href="/Register" style="grid-row: 5;">
                     <p>Регистрация</p>
                 </a>
             </div>
         </form>
+
+    </div>
     </div>
     <footer>
         <div class="footer-content">
@@ -102,7 +111,7 @@
                 <ul>
                     <li>Адрес магазина: Улица Примерная, 123</li>
                     <li>Телефон горячей линии: +7 (123) 456-78-90</li>
-                    <li>Следите за акциями и новинками Email: info@example.com</li>
+                    <li>Следите за акциями и навинками Email: info@example.com</li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -120,6 +129,8 @@
     </footer>
 </body>
 <script src="../js/login.js"></script>
-<script src="../js/site.js"></script>
+<script src="../js/catalog.js"></script>
+<script src="../js/ParseErrorModel.js"></script>
+<script src="../js/Layout.js"></script>
 
 </html>
