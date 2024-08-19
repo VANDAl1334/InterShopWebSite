@@ -1,6 +1,5 @@
 // Загрузка товаров
-async function loadProducts(nameFilter)
-{
+async function loadProducts(nameFilter) {
     nameFilter = nameFilter === undefined ? "" : nameFilter;
     const search = document.getElementById("tb_search");
     search.value = nameFilter;
@@ -59,18 +58,12 @@ async function generateProducts(jsonData) {
 
         // Название товара
         const name = document.createElement("p");
-        name.innerHTML = jsonData[i]["name"];
+        name.innerHTML = `Название: ${jsonData[i]["name"]}`;
         name.setAttribute("class", "productName");
-        // задаём обработчик нажатия
-        name.addEventListener("click", async e => {
-            e.preventDefault();
-
-            location.href = `${location.origin}/Product?productId=${e.currentTarget.parentElement.id}`;
-        });
 
         // Описание товара
         const description = document.createElement("p");
-        description.innerHTML = jsonData[i]["description"];
+        description.innerHTML = `Описание: ${jsonData[i]["description"]}`;
         description.setAttribute("class", "productDescription");
 
         container.appendChild(name);

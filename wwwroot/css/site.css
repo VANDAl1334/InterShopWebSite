@@ -17,7 +17,13 @@ body {
     height: 100%;
     margin:0;
 }
-
+.catalogBody{
+    display: flex;
+    flex-direction: column; 
+    overflow: visible; 
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
 a {
     text-decoration: none;
 }
@@ -98,6 +104,10 @@ form {
     
     align-self: left;
 }
+#showPassword:hover{
+    background: #2c2c2c;
+}
+
 input {
     padding: 10px;
     border: 1px solid #ccc;
