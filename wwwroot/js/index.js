@@ -63,6 +63,12 @@ function generateDiscounts(jsonData, sectionName) {
         const name = document.createElement("p");
         name.innerHTML = `${jsonData[i]["name"]}`;
         name.setAttribute("class", "productName");
+        // задаём обработчик нажатия
+        name.addEventListener("click", async e => {
+            e.preventDefault();
+
+            location.href = `${location.origin}/Product?productId=${e.currentTarget.parentElement.id}`;
+        });
 
         // Описание товара
         const description = document.createElement("p");
