@@ -77,11 +77,21 @@
                 <p id="rating">Рейтинг: 0 / 10</p>
             </div>
 
-            <div id="commentsLabel">
-                <p>Отзывы</p>
-                <p id="commentsCount"></p>
-                <button id="putComment">Оставить отзыв</button>
+        <div id="commentsLabel">
+            <p>Отзывы</p>
+            <p id="commentsCount"></p>
+            <button id="btnShowCommentForm">Оставить отзыв</button>
+        </div>
+        <fieldset hidden="true" id="commentForm" style="border-radius: 7px; border: 4px solid rgb(133, 133, 133); width: 100%; padding: 15px;">
+            <legend>Комментарий</legend>
+            <div id="putCommentDiv">
+                <p>Оценка:</p>
+                <input type="number" min="1" max="5" id="userRating">
+
+                <textarea id="userMessage"></textarea>
+                <button id="btnPutComment">Отправить</button>
             </div>
+        </fieldset>
 
             <div id="comments">
             </div>

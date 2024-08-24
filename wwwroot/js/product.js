@@ -56,9 +56,9 @@ function generateProductPage() {
     charactsLabel.innerHTML = "Характеристики:";
     const characts = document.createElement("pre");
 
-    var charactsValue = "Характеристики:";
+    var charactsValue = "";
     productData["productVariants"][0]["productVariantCharacteristics"].forEach(charact => {
-        charactsValue += `\n${charact["characteristic"]}: ${charact["value"]}`;
+        charactsValue += `\n${charact["characteristic"]}: ${charact["value"]} ${charact["unit"] === null ? "" : charact["unit"]}`;
     });
     characts.innerHTML = charactsValue;
     descriptionTag.appendChild(charactsLabel);
@@ -77,7 +77,7 @@ function generateProductPage() {
     const comments = document.getElementById("comments");
 
     productData["comments"].forEach(commentInfo => {
-        
+
         const comment = document.createElement("div");
         comment.setAttribute("class", "comment");
 
@@ -111,3 +111,56 @@ function getParam(name) {
     if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
         return decodeURIComponent(name[1]);
 }
+
+document.getElementById("btnShowCommentForm").addEventListener("click", async e =>
+{
+    if(sessionStorage.TokenKey === undefined)
+    {
+        alert("Для оставления отзыва необходимо войти в аккаунт");
+        return;
+    }
+
+    const commentForm = document.getElementById("commentForm");
+    commentForm.hidden = false;
+});
+
+document.getElementById("btnPutComment").addEventListener("click", async e => {
+    e.preventDefault();
+
+    var response = await fetch("/api/auth/Authorize", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${sessionStorage.TokenKey}`
+        }
+    });
+
+    const user = await response.json();
+
+    const comment =
+    {
+        login: user["userJson"]["login"],
+        message: document.getElementById("userMessage").value,
+        rating: document.getElementById("userRating").value,
+        productId: productId 
+    };
+
+    response = await fetch("/api/Comment", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${sessionStorage.TokenKey}`
+        },
+        body: JSON.stringify(comment) 
+    })
+
+    if(response.ok)
+    {
+        alert("Отзыв добавлен");
+    }
+    else
+    {
+        alert("При отправлении отзыва произошла ошибка!");
+        console.log("Comment add: status " + response.status);
+    }
+});
