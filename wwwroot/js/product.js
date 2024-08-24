@@ -1,13 +1,11 @@
-let productId = getParam("productId");
-
-let productData; // = getProductData(productId);
+let productData;
 
 getProductData(productId);
 
 
 
 async function getProductData(id) {
-    const response = await fetch(`/api/Product/${productId}`,
+    const response = await fetch(`/api/Product/${id}`,
         {
             method: "GET",
             headers: {
@@ -142,7 +140,7 @@ document.getElementById("btnPutComment").addEventListener("click", async e => {
         login: user["userJson"]["login"],
         message: document.getElementById("userMessage").value,
         rating: document.getElementById("userRating").value,
-        productId: productId 
+        productId: getParam("productId")
     };
 
     response = await fetch("/api/Comment", {
