@@ -9,22 +9,24 @@
     <link rel="stylesheet" href="./css/site.css" />
     <link rel="stylesheet" href="./css/Layout.css" />
     <link rel="stylesheet" href="./css/index.css" />
-    <link rel="icon" href="./icons/logo-icon.png" type="image/x-icon" />
+    <link rel="icon" href="./icons/favicon.ico" type="image/x-icon" />
 </head>
 
 <body class="catalogBody">
     <header>
         <div class="header-content">
             <div class="up-level">
-                <div class="logo">
-                    <img src="./icons/Logo.png" />
-                    <a href="/">InterShop</a>
-                </div>
+                <a href="/">
+                    <div class="logo">
+                        <img src="../icons/Logo.png" />
+                        <p>InterShop</p>
+                    </div>
+                </a>
                 <nav>
                     <ul>
                         <li><a id="Discounts" href="/Discounts">Акции</a></li>
                         <li><a id="Catalog" href="/Catalog">Каталог</a></li>
-                        <li><a id="Shops" href="/Shops">Магазины</a></li> 
+                        <li><a id="Shops" href="/Shops">Магазины</a></li>
                     </ul>
                 </nav>
                 <div class="header-actions">
@@ -52,7 +54,9 @@
             </div>
         </div>
     </header>
-    <div id="content" class="content" style="display: inline-grid;">
+    <div id="divFromHeader">
+        <div id="content" class="content" style="display: inline-grid;">
+        </div>
     </div>
     <footer>
         <div class="footer-content">

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/site.css" />
     <link rel="stylesheet" href="../css/Layout.css" />
-    <link rel="icon" href="../icons/logo-icon.png" type="image/x-icon" />
+    <link rel="icon" href="../icons/favicon.ico" type="image/x-icon" />
 </head>
 
 <body>
@@ -53,18 +53,19 @@
             </div>
         </div>
     </header>
-    <div class="divFromHeader" id="divFromHeader">
-        <div id="dataProfileList">
+    <div id="divFromHeader">
+        <div id="dataProfileList" hidden>
             <form>
                 <h1>Профиль:</h1>
                 <ul style="list-style-type: none;">
                     <div style="display: flex; flex-direction: row;">
                         <li class="listDataProfile">Логин:</li>
                         <label class="dataProfile" name="login"></label>
-                    </div>
+                    </div>                    
                     <div style="display: flex; flex-direction: row;">
                         <li class="listDataProfile">Почта:</li>
                         <label class="dataProfile" name="mail"></label>
+                        <img src="../icons/close.png" id="instanseMail">
                     </div>
                 </ul>
             </form>

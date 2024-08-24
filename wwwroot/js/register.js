@@ -45,7 +45,18 @@ const validateMail = (mail) => {
         return true;
     }
 }
-
+document.getElementById("showPassword").addEventListener("change", () => {
+    let btnShow = document.getElementById("showPassword");
+    let password = document.getElementById("password");
+    if (btnShow.checked) {
+        password.type = 'text';
+        btnShow.style.background = '#2c2c2c';
+    }
+    else {
+        password.type = 'password';
+        btnShow.style.background = 'transparent';
+    }
+});
 document.getElementById("submitRegister").addEventListener("click", async e => {
     e.preventDefault();
 

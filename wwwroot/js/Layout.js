@@ -7,7 +7,7 @@ var FavouriteHeader = document.getElementById("favourite");
 var divFromHeader = document.getElementById("divFromHeader");
 var header = document.getElementsByClassName("header-content");
 onload = async () => {
-    // divFromHeader.style.marginTop = header[0].clientHeight.toString();
+    divFromHeader.style.marginTop = header[0].clientHeight.toString() + "px";
     if (/Catalog\b/.test(location.pathname)) { FocusHeader(CatalogHeader); return; }
     if (/Shops\b/.test(location.pathname)) { FocusHeader(ShopsHeader); return; }
     if (/Discounts\b/.test(location.pathname)) { FocusHeader(DiscountsHeader); return; }

@@ -12,8 +12,7 @@
 .content {
     background-color: #e6e6e6;
     margin: auto;
-    width: 60%;
-    margin-top: 170px;
+    width: 100%;
     display: inline-grid;
     height: 100%;
 }
