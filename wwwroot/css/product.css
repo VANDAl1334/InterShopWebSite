@@ -59,6 +59,11 @@
     width: 100%;
 }
 
+.commentMessage {
+    grid-row: 2;
+    grid-column: 1 / span 3;
+}
+
 .userIcon {
     width: 50px;
     height: fit-content;
