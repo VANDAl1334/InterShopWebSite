@@ -50,7 +50,7 @@ async function generateDiscounts(jsonData)
         name.addEventListener("click", async e => {
             e.preventDefault();
 
-            location.href = `${location.origin}/Product?productId=${e.currentTarget.parentElement.id}`;
+            location.href = `${location.origin}/product?productId=${e.currentTarget.parentElement.id}`;
         });
 
         // Описание товара

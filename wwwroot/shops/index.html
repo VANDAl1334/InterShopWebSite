@@ -2,13 +2,15 @@
 <html>
 
 <head>
-    <title>InterShop | Избранное</title>
+    <title>InterShop | Магазины</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/site.css" />
     <link rel="stylesheet" href="../css/Layout.css" />
-    <link rel="icon" href="../icons/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/shop.css" />
+    <link rel="icon" href="../icons/logo-icon.png" type="image/x-icon" />
+    <script src="https://api-maps.yandex.ru/v3/?apikey=66a778e0-d0e6-497e-ad28-aaffb8daf9fe&lang=ru_RU"></script>
 </head>
 
 <body
@@ -24,9 +26,9 @@
                 </a>
                 <nav>
                     <ul>
-                        <li><a id="Discounts" href="/Discounts">Акции</a></li>
-                        <li><a id="Catalog" href="/Catalog">Каталог</a></li>
-                        <li><a id="Shops" href="/Shops">Магазины</a></li> 
+                        <li><a id="Discounts" href="/discounts">Акции</a></li>
+                        <li><a id="Catalog" href="/catalog">Каталог</a></li>
+                        <li><a id="Shops" href="/shops">Магазины</a></li>
                     </ul>
                 </nav>
                 <div class="header-actions">
@@ -55,7 +57,17 @@
         </div>
     </header>
     <div id="divFromHeader">
-    <div style="align-self: center;">Мы что нибудь придумаем...</div>
+        <div class="content">
+            <div id="map"></div>
+            <div class="Addresess">
+                <div>
+                    <p class="addresessLabel">Адреса:</p>
+                    <p class="address">Ул. Зиповская, 7</p>
+                    <p class="address">Ул. Российская, 100</p>
+                    <p class="address">Ул. Красная, 12</p>
+                </div>
+            </div>
+        </div>
     </div>
     <footer>
         <div class="footer-content">
@@ -113,5 +125,6 @@
 
 <script src="../js/Layout.js"></script>
 <script src="../js/catalog.js"></script>
+<script src="../js/shops.js"></script>
 
 </html>

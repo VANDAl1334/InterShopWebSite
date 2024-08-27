@@ -2,19 +2,16 @@
 <html>
 
 <head>
-    <title>InterShop | Магазины</title>
+    <title>InterShop | Корзина</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/site.css" />
     <link rel="stylesheet" href="../css/Layout.css" />
-    <link rel="stylesheet" href="../css/shop.css" />
-    <link rel="icon" href="../icons/logo-icon.png" type="image/x-icon" />
-    <script src="https://api-maps.yandex.ru/v3/?apikey=66a778e0-d0e6-497e-ad28-aaffb8daf9fe&lang=ru_RU"></script>
+    <link rel="icon" href="../icons/favicon.ico" type="image/x-icon" />
 </head>
 
-<body
-    style="display: flex; flex-direction: column; overflow: visible; flex-wrap: nowrap;justify-content: space-between;">
+<body>
     <header>
         <div class="header-content">
             <div class="up-level">
@@ -26,9 +23,9 @@
                 </a>
                 <nav>
                     <ul>
-                        <li><a id="Discounts" href="/Discounts">Акции</a></li>
-                        <li><a id="Catalog" href="/Catalog">Каталог</a></li>
-                        <li><a id="Shops" href="/Shops">Магазины</a></li>   
+                        <li><a id="Discounts" href="/discounts">Акции</a></li>
+                        <li><a id="Catalog" href="/catalog">Каталог</a></li>
+                        <li><a id="Shops" href="/shops">Магазины</a></li>
                     </ul>
                 </nav>
                 <div class="header-actions">
@@ -56,16 +53,8 @@
             </div>
         </div>
     </header>
-    <div class="content">
-        <div id="map"></div>
-        <div class="Addresess">
-            <div>
-                <p class="addresessLabel">Адреса:</p>
-                <p class="address">Ул. Зиповская, 7</p>
-                <p class="address">Ул. Российская, 100</p>
-                <p class="address">Ул. Красная, 12</p>
-            </div>
-        </div>
+    <div id="divFromHeader">
+        <div style="align-self: center;">Здесь что то будет...</div>
     </div>
     <footer>
         <div class="footer-content">
@@ -103,7 +92,7 @@
                 <ul>
                     <li>Адрес магазина: Улица Примерная, 123</li>
                     <li>Телефон горячей линии: +7 (123) 456-78-90</li>
-                    <li>Следите за акциями и новинками Email: info@example.com</li>
+                    <li>Следите за акциями и навинками Email: info@example.com</li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -121,7 +110,7 @@
     </footer>
 </body>
 
+<script src="../js/catalog.js"></script>
 <script src="../js/Layout.js"></script>
-<script src="../js/shops.js"></script>
 
 </html>

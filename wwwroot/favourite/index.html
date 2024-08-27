@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>InterShop | Профиль</title>
+    <title>InterShop | Избранное</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -11,7 +11,8 @@
     <link rel="icon" href="../icons/favicon.ico" type="image/x-icon" />
 </head>
 
-<body>
+<body
+    style="display: flex; flex-direction: column; overflow: visible; flex-wrap: nowrap;justify-content: space-between;">
     <header>
         <div class="header-content">
             <div class="up-level">
@@ -23,9 +24,9 @@
                 </a>
                 <nav>
                     <ul>
-                        <li><a id="Discounts" href="/Discounts">Акции</a></li>
-                        <li><a id="Catalog" href="/Catalog">Каталог</a></li>
-                        <li><a id="Shops" href="/Shops">Магазины</a></li>
+                        <li><a id="Discounts" href="/discounts">Акции</a></li>
+                        <li><a id="Catalog" href="/catalog">Каталог</a></li>
+                        <li><a id="Shops" href="/shops">Магазины</a></li> 
                     </ul>
                 </nav>
                 <div class="header-actions">
@@ -54,22 +55,7 @@
         </div>
     </header>
     <div id="divFromHeader">
-        <div id="dataProfileList" hidden>
-            <form>
-                <h1>Профиль:</h1>
-                <ul style="list-style-type: none;">
-                    <div style="display: flex; flex-direction: row;">
-                        <li class="listDataProfile">Логин:</li>
-                        <label class="dataProfile" name="login"></label>
-                    </div>                    
-                    <div style="display: flex; flex-direction: row;">
-                        <li class="listDataProfile">Почта:</li>
-                        <label class="dataProfile" name="mail"></label>
-                        <img src="../icons/close.png" id="instanseMail">
-                    </div>
-                </ul>
-            </form>
-        </div>
+    <div style="align-self: center;">Мы что нибудь придумаем...</div>
     </div>
     <footer>
         <div class="footer-content">
@@ -126,7 +112,6 @@
 </body>
 
 <script src="../js/Layout.js"></script>
-<script src="../js/profile.js"></script>
 <script src="../js/catalog.js"></script>
 
 </html>

@@ -6,7 +6,7 @@ document.getElementById("showPassword").addEventListener("change", () => {
         password.type = 'text';
         btnShow.style.background = '#2c2c2c';
     }
-    else {
+    else {        
         password.type = 'password';
         btnShow.style.background = 'transparent';
     }

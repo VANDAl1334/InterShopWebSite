@@ -2,30 +2,35 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>InterShop</title>
+    <title>InterShop | Каталог</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/site.css" />
     <link rel="stylesheet" href="../css/Layout.css" />
-    <link rel="stylesheet" href="../css/product.css" />
+    <link rel="stylesheet" href="../css/catalog.css" />
     <link rel="icon" href="../icons/favicon.ico" type="image/x-icon" />
 </head>
 
-<body style="display: flex; justify-content: center; overflow: scroll; flex-wrap: wrap;">
+<style>
+
+</style>
+
+<body class="catalogBody">
     <header>
         <div class="header-content">
             <div class="up-level">
-                <div class="logo">
-                    <img src="../icons/Logo.png" />
-                    <a href="/">InterShop</a>
-                </div>
+                <a href="/">
+                    <div class="logo">
+                        <img src="../icons/Logo.png" />
+                        <p>InterShop</p>
+                    </div>
+                </a>
                 <nav>
                     <ul>
-                        <li><a href="/Discounts">Акции</a></li>
-                        <li><a href="/Catalog">Каталог</a></li>
-                        <li><a href="/Shops">Магазины</a></li>
+                        <li><a id="Discounts" href="/discounts">Акции</a></li>
+                        <li><a id="Catalog" href="/catalog">Каталог</a></li>
+                        <li><a id="Shops" href="/shops">Магазины</a></li>
                     </ul>
                 </nav>
                 <div class="header-actions">
@@ -54,47 +59,7 @@
         </div>
     </header>
     <div id="divFromHeader">
-        <div id="content">
-            <p id="productName">Смартфон Poco C4</p>
-            <div id="productInfo">
-                <div id="images">
-                    <img src="Default.png" id="productPreview">
-                    <div id="otherImages">
-                    </div>
-                </div>
-                <div id="description">
-                </div>
-                <div id="buttons">
-                    <div id="toFavourite" class="button">
-                        <p>В избранное</p>
-                        <img src="../icons/Favourite.png">
-                    </div>
-                    <div id="toBasket" class="button">
-                        <p>В корзину</p>
-                        <img src="../icons/Basket.png">
-                    </div>
-                </div>
-                <p id="rating">Рейтинг: 0 / 10</p>
-            </div>
-
-        <div id="commentsLabel">
-            <p>Отзывы</p>
-            <p id="commentsCount"></p>
-            <button id="btnShowCommentForm">Оставить отзыв</button>
-        </div>
-        <fieldset hidden="true" id="commentForm" style="border-radius: 7px; border: 4px solid rgb(133, 133, 133); width: 100%; padding: 15px;">
-            <legend>Комментарий</legend>
-            <div id="putCommentDiv">
-                <p>Оценка:</p>
-                <input type="number" min="1" max="5" id="userRating">
-
-                <textarea id="userMessage"></textarea>
-                <button id="btnPutComment">Отправить</button>
-            </div>
-        </fieldset>
-
-            <div id="comments">
-            </div>
+        <div class="results" id="results">
         </div>
     </div>
     <footer>
@@ -133,7 +98,7 @@
                 <ul>
                     <li>Адрес магазина: Улица Примерная, 123</li>
                     <li>Телефон горячей линии: +7 (123) 456-78-90</li>
-                    <li>Следите за акциями и навинками Email: info@example.com</li>
+                    <li>Следите за акциями и новинками Email: info@example.com</li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -150,8 +115,7 @@
         </div>
     </footer>
 </body>
-
+<script src="../js/catalog.js"></script>
 <script src="../js/Layout.js"></script>
-<script src="../js/product.js"></script>
 
 </html>

@@ -1,8 +1,6 @@
 const validatePassword = () => {
-    let errmsg = document.getElementById("errmsgPassword");
-    //let allah = new RegExp("^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&? ]).*$")    
+    let errmsg = document.getElementById("errmsgPassword");    
     errmsg.innerText = "";
-    // if (validatepass(password.value)) {
     if (!/^.{9,}./.test(password.value)) {
         errmsg.innerText = "Минимум 10 символов";
         password.style.background = "red";
@@ -96,11 +94,15 @@ document.getElementById("submitRegister").addEventListener("click", async e => {
     }
     else
         errmsgPassword.innerText = ""
-    let loginJson = { login: login }
-    const responseLoginExists = await fetch("/api/auth/LoginExists", {
-        method: "POST",
-        headers: { "Accept": "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify(loginJson)
+    // let loginJson = { login: login }
+    const responseLoginExists = await fetch(`/api/auth/LoginExists?login=${login}`, {
+        method: "GET",
+        headers: 
+        { 
+            // "Accept": "application/json", 
+            "Content-Type": "application/json",
+        }
+        // body: JSON.stringify(loginJson)
     });
     if (!responseLoginExists.ok) {
         let boolerr = await ParseError(responseLoginExists);
@@ -108,13 +110,13 @@ document.getElementById("submitRegister").addEventListener("click", async e => {
             errmsgLogin.innerText = "Неверные логин или пароль";
         return;
     }
-    var pass = btoa(String.fromCharCode.apply(null, new Uint8Array(await window.crypto.subtle.digest("SHA-256", new TextEncoder().encode(document.getElementById("password").value)))));
+    var pass = btoa(String.fromCharCode.apply(null, new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(document.getElementById("password").value)))));
 
     const user =
     {
         login: document.getElementById("login").value,
         password: pass,
-        mail: document.getElementById("mail").value
+        mail: document.getElementById("mail").value        
     }
 
     let response = await fetch("/api/auth/Register", {
@@ -125,7 +127,7 @@ document.getElementById("submitRegister").addEventListener("click", async e => {
 
     if (response.ok) {
         alert("Вы успешно зарегистрировались!");
-        window.location.href = `${location.origin}/Login`;
+        window.location.href = `${location.origin}/login`;
     }
     else {
         await ParseError(response);

@@ -2,10 +2,10 @@
 <html>
 
 <head>
-    <title>InterShop | Корзина</title>
+    <title>InterShop | Регистрация</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/site.css" />
     <link rel="stylesheet" href="../css/Layout.css" />
     <link rel="icon" href="../icons/favicon.ico" type="image/x-icon" />
@@ -23,9 +23,9 @@
                 </a>
                 <nav>
                     <ul>
-                        <li><a id="Discounts" href="/Discounts">Акции</a></li>
-                        <li><a id="Catalog" href="/Catalog">Каталог</a></li>
-                        <li><a id="Shops" href="/Shops">Магазины</a></li>
+                        <li><a href="/discounts">Акции</a></li>
+                        <li><a href="/catalog">Каталог</a></li>
+                        <li><a href="/shops">Магазины</a></li>
                     </ul>
                 </nav>
                 <div class="header-actions">
@@ -35,7 +35,7 @@
             </div>
             <div class="down-level">
                 <div style="display: flex; align-self: center;">
-                    <input id="tb_search" type="text">
+                    <input id="tb_search" placeholder="Поиск" type="text">
                     <button id="btn_search"></button>
                 </div>
                 <button class="header-button" id="favourite">
@@ -54,7 +54,33 @@
         </div>
     </header>
     <div id="divFromHeader">
-        <div style="align-self: center;">Здесь что то будет...</div>
+        <div class="form-div">
+            <form class="form">
+                <div class="form-inside-register">
+                    <h3 style="grid-row: 1; grid-column: 1 /2;align-self: center;">Регистрация</h3>
+                    <div class="div2" style="grid-row: 2;">
+                        <span id="errmsgLogin" for="login" name="Login" class="errormsg"></span>
+                        <input id="login" placeholder="Логин" />
+                    </div>
+                    <div class="div2" style="grid-row: 3;">
+                        <span id="errmsgMail" for="mail" name="Mail" class="errormsg"></span>
+                        <input id="mail" placeholder="Почта" name="mail" />
+                    </div>
+                    <div class="div2" style="grid-row: 4;">
+                        <span id="errmsgPassword" for="password" name="Password" class="errormsg"></span>
+                        <input id="password" type="password" placeholder="Пароль" />
+                    </div>
+                    <input type="checkbox" id="showPassword" style="width: 30px; height: 30px; grid-row: 4; ">
+                    <div class="div2" style="grid-row: 5;">
+                        <input id="confirmPassword" type="password" placeholder="Подтверждение пароля" />
+                    </div>
+                    <button id="submitRegister" style="grid-row: 6;">Зарегистрироваться</button>
+                    <a href="/login" style="grid-row: 7;">
+                        <p>Есть аккаунт</p>
+                    </a>
+                </div>
+            </form>
+        </div>
     </div>
     <footer>
         <div class="footer-content">
@@ -92,7 +118,7 @@
                 <ul>
                     <li>Адрес магазина: Улица Примерная, 123</li>
                     <li>Телефон горячей линии: +7 (123) 456-78-90</li>
-                    <li>Следите за акциями и навинками Email: info@example.com</li>
+                    <li>Следите за акциями и навинками Mail: info@example.com</li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -110,7 +136,7 @@
     </footer>
 </body>
 
-<script src="../js/catalog.js"></script>
+<script src="../js/register.js"></script>
 <script src="../js/Layout.js"></script>
 
 </html>

@@ -2,17 +2,16 @@
 <html>
 
 <head>
-    <title>InterShop | Акции</title>
+    <title>InterShop | Профиль</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/site.css" />
     <link rel="stylesheet" href="../css/Layout.css" />
-    <link rel="stylesheet" href="../css/disounts.css" />
-    <link rel="icon" href="../icons/logo-icon.png" type="image/x-icon" />
+    <link rel="icon" href="../icons/favicon.ico" type="image/x-icon" />
 </head>
 
-<body class="catalogBody">
+<body>
     <header>
         <div class="header-content">
             <div class="up-level">
@@ -24,9 +23,9 @@
                 </a>
                 <nav>
                     <ul>
-                        <li id="Discounts"><a href="/Discounts">Акции</a></li>
-                        <li id="Catalog"><a href="/Catalog">Каталог</a></li>
-                        <li id="Shops"><a href="/Shops">Магазины</a></li>
+                        <li><a id="Discounts" href="/discounts">Акции</a></li>
+                        <li><a id="Catalog" href="/catalog">Каталог</a></li>
+                        <li><a id="Shops" href="/shops">Магазины</a></li>
                     </ul>
                 </nav>
                 <div class="header-actions">
@@ -55,8 +54,30 @@
         </div>
     </header>
     <div id="divFromHeader">
-        <div id="content" class="content" style="display: inline-grid;">
+        <div id="dataProfileList" hidden>
+            <form>
+                <h1>Профиль:</h1>
+                <ul style="list-style-type: none;">
+                    <div style="display: flex; flex-direction: row;">
+                        <li class="listDataProfile">Логин:</li>
+                        <label class="dataProfile" name="login"></label>
+                    </div>                    
+                    <div style="display: flex; flex-direction: row;">
+                        <li class="listDataProfile">Почта:</li>
+                        <label class="dataProfile" type="text" name="mail"></label>
+                        <input id="mail" hidden/>
+                        <img src="../icons/close.png" id="instanseMail">
+                    </div>
+                </ul>
+                <button id="changeMail">Изменить почту</button>
+                <button id="resetPassword">Сброс пароля</button>
+                <div id="btnExit" style="display: flex; align-self: end;">
+                    <button style="background: red; border: 0; box-shadow: 0 4px 30px rgba(0, 0, 1, 0.5);">Выход из пользователя</button>
+                </div>
+            </form>
+            
         </div>
+
     </div>
     <footer>
         <div class="footer-content">
@@ -94,7 +115,7 @@
                 <ul>
                     <li>Адрес магазина: Улица Примерная, 123</li>
                     <li>Телефон горячей линии: +7 (123) 456-78-90</li>
-                    <li>Следите за акциями и навинками Email: info@example.com</li>
+                    <li>Следите за акциями и новинками Email: info@example.com</li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -113,7 +134,7 @@
 </body>
 
 <script src="../js/Layout.js"></script>
-<script src="../js/discounts.js"></script>
+<script src="../js/profile.js"></script>
 <script src="../js/catalog.js"></script>
 
 </html>

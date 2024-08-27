@@ -1,6 +1,6 @@
 let productData;
 
-getProductData(productId);
+getProductData(getParam("productId"));
 
 
 
@@ -155,6 +155,7 @@ document.getElementById("btnPutComment").addEventListener("click", async e => {
     if(response.ok)
     {
         alert("Отзыв добавлен");
+        location.reload();
     }
     else
     {
