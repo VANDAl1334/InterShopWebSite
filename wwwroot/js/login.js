@@ -51,7 +51,7 @@ document.getElementById("submitLogin").addEventListener("click", async e => {
         location.href = location.origin;
     }
     else {
-        console.log(responseAuth);
+        ParseHttpStatus(responseAuth);
         let boolerr = await ParseError(responseAuth);
         if (boolerr)
             errmsgLogin.innerText = "Неверные логин или пароль";

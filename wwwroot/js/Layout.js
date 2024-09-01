@@ -6,16 +6,17 @@ var BasketHeader = document.getElementById("basket");
 var FavouriteHeader = document.getElementById("favourite");
 var divFromHeader = document.getElementById("divFromHeader");
 var header = document.getElementsByClassName("header-content");
+var response;
 onload = async () => {
     divFromHeader.style.marginTop = header[0].clientHeight.toString() + "px";
-    if (/Catalog\b/.test(location.pathname)) { FocusHeader(CatalogHeader); return; }
-    if (/Shops\b/.test(location.pathname)) { FocusHeader(ShopsHeader); return; }
-    if (/Discounts\b/.test(location.pathname)) { FocusHeader(DiscountsHeader); return; }
-    if (/Profile\b/.test(location.pathname)) { FocusHeader(ProfileHeader); return; }
-    if (/Basket\b/.test(location.pathname)) { FocusHeader(BasketHeader); return; }
-    if (/Favourite\b/.test(location.pathname)) { FocusHeader(FavouriteHeader); return; }    
+    if (/catalog\b/.test(location.pathname)) { FocusHeader(CatalogHeader); return; }
+    if (/shops\b/.test(location.pathname)) { FocusHeader(ShopsHeader); return; }
+    if (/discounts\b/.test(location.pathname)) { FocusHeader(DiscountsHeader); return; }
+    if (/profile\b/.test(location.pathname)) { FocusHeader(ProfileHeader); return; }
+    if (/basket\b/.test(location.pathname)) { FocusHeader(BasketHeader); return; }
+    if (/favourite\b/.test(location.pathname)) { FocusHeader(FavouriteHeader); return; }
 }
-function FocusHeader(chapter) {    
+function FocusHeader(chapter) {
     chapter.style.background = "#797979";
     chapter.style.color = "#ffffff";
     chapter.style.borderRadius = "15px";
@@ -39,8 +40,8 @@ ProfileHeader.addEventListener("click", async e => {
 
 // Кнопка поиска
 document.getElementById("btn_search").addEventListener("click", async e => {
-    e.preventDefault();    
-    const search = document.getElementById("tb_search");        
+    e.preventDefault();
+    const search = document.getElementById("tb_search");
     loadProducts(search.value);
     location.href = `${location.origin}/catalog?nameFilter=${search.value}`;
     // history.pushState(null, "", `${location.origin}/Catalog?nameFilter=${search.value}`); // переход на страницу без ее обновления
@@ -65,39 +66,35 @@ function getKeysWithValues(response) {
     return true;
 }
 // Загрузка товаров
-async function loadProducts(nameFilter)
-{
+async function loadProducts(nameFilter) {
     nameFilter = nameFilter === undefined ? "" : nameFilter;
     const search = document.getElementById("tb_search");
     search.value = nameFilter;
 
     deletePreviousResults();
 
-    const response = await fetch(`/api/Product?nameFilter=${nameFilter}`, {
+    response = await fetch(`/api/Product?nameFilter=${nameFilter}`, {
         method: "GET",
         headers: {
             "Accept": "application/json"
         }
     });
 
-    if(response.ok)
-    {
+    if (response.ok) {
         data = await response.json();
         generateProducts(data);
     }
 }
 
 // Удаление предыдущих результатов 
-function deletePreviousResults()
-{
+function deletePreviousResults() {
     const root = document.getElementById("results");
 
     root.innerHTML = "";
 }
 
 // Создание списка товаров
-async function generateProducts(jsonData)
-{
+async function generateProducts(jsonData) {
     var root = document.getElementById("results");
 
     // Строка "Результаты поиска"
@@ -113,8 +110,7 @@ async function generateProducts(jsonData)
 
     root.append(result);
 
-    for(let i = 0; i < jsonData.length; i++)
-    {
+    for (let i = 0; i < jsonData.length; i++) {
         // Контейнер результатов 
         const container = document.createElement("div");
         // В качестве id контейнера задаём id товара
@@ -126,7 +122,7 @@ async function generateProducts(jsonData)
         preview.setAttribute("src", `../images/products/${jsonData[i]["previewPath"]}`)
         preview.setAttribute("class", "productPreview");
         container.appendChild(preview);
-               
+
         // Название товара
         const name = document.createElement("p");
         name.innerHTML = jsonData[i]["name"];
@@ -143,13 +139,13 @@ async function generateProducts(jsonData)
         description.innerHTML = jsonData[i]["description"];
         description.setAttribute("class", "productDescription");
 
-        container.appendChild(name);        
-        container.appendChild(description);   
-        
+        container.appendChild(name);
+        container.appendChild(description);
+
         // Кнопка добавления в избранное
         const toFavourite = document.createElement("button");
         toFavourite.setAttribute("class", "productFavourite");
-        
+
         container.appendChild(toFavourite);
 
         // Блок для цены и цены по скидке
@@ -158,24 +154,22 @@ async function generateProducts(jsonData)
 
         // Цена без скидки
         const cost = document.createElement("span");
-        
+
         var costValue = jsonData[i]["productVariants"][0]["priceHistories"][0]["price"];
         cost.innerHTML = `${costValue} руб.`;
         cost.setAttribute("class", "productCost");
         divCost.appendChild(cost);
 
         let lastDiscount = jsonData[i]["discountHistories"][0];
-        
+
         var costDisount;
         // Если существует хотя бы одна скидка
-        if(lastDiscount != undefined)
-        {
+        if (lastDiscount != undefined) {
             let lastDiscountValue = jsonData[i]["discountHistories"][0]["discount"];
             const currentDate = new Date();
-            
+
             // Проверяем вхождение текущей даты в диапазон скидки
-            if(currentDate >= new Date(lastDiscount["dateFrom"]) && currentDate <= new Date(lastDiscount["dateTo"]))
-            {
+            if (currentDate >= new Date(lastDiscount["dateFrom"]) && currentDate <= new Date(lastDiscount["dateTo"])) {
                 // Если скидка входит в диапазон (действует), то формируем тег для скидки
                 costDisount = document.createElement("span");
                 costDisount.innerHTML = `${costValue - costValue * (lastDiscountValue / 100)} руб.`;
@@ -183,8 +177,8 @@ async function generateProducts(jsonData)
                 cost.setAttribute("style", "color: rgb(180, 180, 180);text-decoration: line-through;");
                 divCost.appendChild(costDisount);
             }
-        }  
-        
+        }
+
         container.appendChild(divCost);
 
         // Кнопка "В корзину"
@@ -192,7 +186,7 @@ async function generateProducts(jsonData)
         btnBasket.innerHTML = "В корзину"
         btnBasket.setAttribute("class", "productToBasket");
         container.appendChild(btnBasket);
-                
+
         root.append(container);
     }
 }
@@ -200,7 +194,35 @@ async function generateProducts(jsonData)
 // Загружаем товары при загрузке страницы
 loadProducts(getParam("nameFilter"));
 
-function getParam(name){
-    if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
-       return decodeURIComponent(name[1]);
- }
+function getParam(name) {
+    if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
+
+        return decodeURIComponent(name[1]);
+}
+
+let validatemail = (mail) => {
+    return mail.match(
+        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
+const validateMail = (mail) => {
+    let errmsg = document.getElementById("errmsgMail");
+
+    if (validatemail(mail.value)) {
+        errmsg.innerText = "";
+        mail.style.background = "white";
+        return false;
+    } else {
+        errmsg.innerText = "Введен неверный формат почты";
+        errmsg.style.color = "red";
+        mail.style.background = "red";
+        return true;
+    }
+}
+function ParseHttpStatus(response) {
+    if (response.status >= 500)
+        alert(`${response.statusText} ${response.status} Оллах не отвичает жыдким`)
+    else if (response.status >= 400)
+        alert(response.statusText + " " + response.status)
+}

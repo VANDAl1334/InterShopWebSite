@@ -61,21 +61,35 @@
                     <div style="display: flex; flex-direction: row;">
                         <li class="listDataProfile">Логин:</li>
                         <label class="dataProfile" name="login"></label>
-                    </div>                    
-                    <div style="display: flex; flex-direction: row;">
+                    </div>
+                    <div style="display: flex; flex-direction: row; align-items: baseline;">
                         <li class="listDataProfile">Почта:</li>
                         <label class="dataProfile" type="text" name="mail"></label>
-                        <input id="mail" hidden/>
-                        <img src="../icons/close.png" id="instanseMail">
+                        <input id="mail" hidden />
+                        <div>
+                            <img src="../icons/close.png" id="instanseMail">
+                        </div>
                     </div>
                 </ul>
+                <span id="errmsgMail"></span>
                 <button id="changeMail">Изменить почту</button>
+                <button id="saveChangeMail" hidden>Сохранить изменения</button>
                 <button id="resetPassword">Сброс пароля</button>
-                <div id="btnExit" style="display: flex; align-self: end;">
-                    <button style="background: red; border: 0; box-shadow: 0 4px 30px rgba(0, 0, 1, 0.5);">Выход из пользователя</button>
+                <div style="display: flex; align-self: end; flex-direction: column;">
+                    <button id="btnExit"
+                        style="background: red; border: 0; box-shadow: 0 4px 30px rgba(0, 0, 1, 0.5);">Выход из
+                        пользователя</button>
+                    <button style="background: red; border: 0; box-shadow: 0 4px 30px rgba(0, 0, 1, 0.5);"
+                        id="deleteUser">Удалить аккаунт</button>
+                    <label id="deleteUserLabel" hidden>Вы уверены?</label>
+                    <div style="display: flex; flex-direction: row;">
+                        <button style="background: red; border: 0; box-shadow: 0 4px 30px rgba(0, 0, 1, 0.5);"
+                            id="deleteUserConfirm" hidden>Удалить</button>
+                        <button id="deleteUserCancel" hidden>Отмена</button>
+                    </div>
                 </div>
             </form>
-            
+
         </div>
 
     </div>
@@ -135,6 +149,5 @@
 
 <script src="../js/Layout.js"></script>
 <script src="../js/profile.js"></script>
-<script src="../js/catalog.js"></script>
 
 </html>
