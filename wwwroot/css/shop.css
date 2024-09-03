@@ -14,8 +14,8 @@
 }
 
 #map {
-    width: 600px;
-    height: 400px;
+    width: 70%;
+    aspect-ratio: 1;
     margin: 20px;
     border: 2px solid black;
 }
@@ -31,7 +31,6 @@
 
 
 .content {
-    margin-top: 200px;
     display: flex;
     justify-content: center;
 }

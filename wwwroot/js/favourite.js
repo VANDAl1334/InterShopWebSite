@@ -1,51 +1,51 @@
 let favouriteProductsId;
 
-getFavouriteProducts();
+main();
 
-async function getFavouriteProducts() {
-    const response = await fetch(`/api/favourite`,
+async function main()
+{
+    if (sessionStorage.TokenKey === undefined) {
+        location.href = `${location.origin}/register`;
+    }
+    else {
+        let favouriteProducts = await getFavoriteProducts();
+        generateProducts(favouriteProducts);
+    }
+}
+
+
+async function getFavoriteProducts() {
+    let response = await fetch("/api/favourite?productInfo=false",
         {
             method: "GET",
             headers: {
                 "Accept": "application/json",
-                "Authorization": "Bearer " + sessionStorage.TokenKey
+                "Authorization": `Bearer ${sessionStorage.TokenKey}`
+            }
+        });
+    favouriteProductsId = await response.json();
+
+    response = await fetch("/api/favourite?productInfo=true",
+        {
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+                "Authorization": `Bearer ${sessionStorage.TokenKey}`
             }
         });
 
-
-    if (response.ok) {
-        favouriteProductsId = await response.json();
-    }
-}
-
-// Загрузка товаров по скидке
-async function loadDiscounts()
-{
-
-    const response = await fetch(`/api/Product?discountOnly=true`, {
-        method: "GET",
-        headers: {
-            "Accept": "application/json"
-        }
-    });
-
     if(response.ok)
     {
-        data = await response.json();
-        generateDiscounts(data);
+        return await response.json();
+    }
+    else
+    {
+        console.log("[favourite GET] status: " + response.status);
     }
 }
 
-// Создание списка товаров по скидке
-async function generateDiscounts(jsonData)
-{
-    var root = document.getElementById("content");
-
-    // Строка "Результаты поиска"
-    const resultString = document.createElement("p");
-    resultString.setAttribute("style", "font-size: 30px; margin: 10px;");
-    resultString.innerHTML = "Акции";
-    root.appendChild(resultString);
+async function generateProducts(jsonData) {
+    var root = document.getElementById("results");
 
     for (let i = 0; i < jsonData.length; i++) {
         // Контейнер результатов 
@@ -153,7 +153,6 @@ async function generateDiscounts(jsonData)
         container.appendChild(btnBasket);
 
         root.append(container);
+
     }
 }
-
-loadDiscounts();
