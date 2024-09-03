@@ -1,3 +1,22 @@
+let favouriteProductsId;
+
+getFavouriteProducts();
+
+async function getFavouriteProducts() {
+    const response = await fetch(`/api/favourite`,
+        {
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer " + sessionStorage.TokenKey
+            }
+        });
+
+
+    if (response.ok) {
+        favouriteProductsId = await response.json();
+    }
+}
 
 // Загрузка скидок
 async function loadDiscounts() {
@@ -45,9 +64,8 @@ function generateDiscounts(jsonData, sectionName) {
     root.appendChild(discountLabel);
     root.appendChild(discounts);
 
-    for (let i = 0; i < jsonData.length; i++)
-    {
-        // Контейнер
+    for (let i = 0; i < jsonData.length; i++) {
+        // Контейнер результатов 
         const container = document.createElement("div");
         // В качестве id контейнера задаём id товара
         container.setAttribute("id", jsonData[i]["id"]);
@@ -61,7 +79,7 @@ function generateDiscounts(jsonData, sectionName) {
 
         // Название товара
         const name = document.createElement("p");
-        name.innerHTML = `${jsonData[i]["name"]}`;
+        name.innerHTML = jsonData[i]["name"];
         name.setAttribute("class", "productName");
         // задаём обработчик нажатия
         name.addEventListener("click", async e => {
@@ -72,11 +90,51 @@ function generateDiscounts(jsonData, sectionName) {
 
         // Описание товара
         const description = document.createElement("p");
-        description.innerHTML = `${jsonData[i]["description"]}`;
+        description.innerHTML = jsonData[i]["description"];
         description.setAttribute("class", "productDescription");
 
         container.appendChild(name);
         container.appendChild(description);
+
+        // Кнопка добавления в избранное
+        const toFavourite = document.createElement("button");
+        toFavourite.setAttribute("class", "productFavourite");
+        toFavourite.addEventListener("click", async e => {
+            e.preventDefault();
+
+            let favouriteProductId = Number(e.currentTarget.parentElement.id);
+
+            if (favouriteProductsId.includes(favouriteProductId)) {
+                let index = favouriteProductsId.indexOf(favouriteProductId);
+                favouriteProductsId.splice(index, 1);
+
+                e.currentTarget.setAttribute("style", `background-image: url("../icons/Favourite_empty.png");`);
+            }
+            else {
+                favouriteProductsId.push(favouriteProductId);
+                e.currentTarget.setAttribute("style", `background-image: url("../icons/Favourite.png");`);
+            }
+
+            // Обновление списка избранных товаров
+            const response = await fetch("/api/favourite", {
+                method: "PUT",
+                headers: {
+                    "Accept": "application/json",
+                    "Authorization": "Bearer " + sessionStorage.TokenKey
+                },
+                body: JSON.stringify(favouriteProductsId)
+            });
+
+            if (!response.ok) {
+                console.log("[Favourite] Status: " + response.status);
+            }
+        });
+        if (!favouriteProductsId.includes(jsonData[i]["id"])) {
+            toFavourite.setAttribute("style", `background-image: url("../icons/Favourite_empty.png");`);
+        }
+
+        container.appendChild(toFavourite);
+
         // Блок для цены и цены по скидке
         const divCost = document.createElement("div");
         divCost.setAttribute("class", "divProductCost");
@@ -84,29 +142,24 @@ function generateDiscounts(jsonData, sectionName) {
         // Цена без скидки
         const cost = document.createElement("span");
 
-        var costValue = jsonData[i]["productVariants"][0]["priceHistories"][0]["price"];
+        var costValue = jsonData[i]["price"];
         cost.innerHTML = `${costValue} руб.`;
         cost.setAttribute("class", "productCost");
         divCost.appendChild(cost);
 
-        let lastDiscount = jsonData[i]["discountHistories"][0];
+        let discount = jsonData[i]["discount"];
 
         var costDisount;
         // Если существует хотя бы одна скидка
-        if (lastDiscount != undefined) {
-            let lastDiscountValue = jsonData[i]["discountHistories"][0]["discount"];
-            const currentDate = new Date();
+        if (discount != undefined) {
 
-            // Проверяем вхождение текущей даты в диапазон скидки
-            if (currentDate >= new Date(lastDiscount["dateFrom"]) && currentDate <= new Date(lastDiscount["dateTo"])) {
-                // Если скидка входит в диапазон (действует), то формируем тег для скидки
-                costDisount = document.createElement("span");
-                costDisount.innerHTML = `${costValue - costValue * (lastDiscountValue / 100)} руб.`;
-                costDisount.setAttribute("class", "productDiscount");
-                cost.setAttribute("style", "color: rgb(180, 180, 180);text-decoration: line-through;");
-                divCost.appendChild(costDisount);
-            }
+            costDisount = document.createElement("span");
+            costDisount.innerHTML = `${costValue - costValue * (discount / 100)} руб.`;
+            costDisount.setAttribute("class", "productDiscount");
+            cost.setAttribute("style", "color: rgb(180, 180, 180);text-decoration: line-through;");
+            divCost.appendChild(costDisount);
         }
+
 
         container.appendChild(divCost);
 
@@ -115,7 +168,7 @@ function generateDiscounts(jsonData, sectionName) {
         btnBasket.innerHTML = "В корзину"
         btnBasket.setAttribute("class", "productToBasket");
         container.appendChild(btnBasket);
-
+        
         discounts.append(container);
     }
 }

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/site.css" />
+    <link rel="stylesheet" href="../css/favourite.css" />
     <link rel="stylesheet" href="../css/Layout.css" />
     <link rel="icon" href="../icons/favicon.ico" type="image/x-icon" />
 </head>
@@ -26,7 +27,7 @@
                     <ul>
                         <li><a id="Discounts" href="/discounts">Акции</a></li>
                         <li><a id="Catalog" href="/catalog">Каталог</a></li>
-                        <li><a id="Shops" href="/shops">Магазины</a></li> 
+                        <li><a id="Shops" href="/shops">Магазины</a></li>
                     </ul>
                 </nav>
                 <div class="header-actions">
@@ -55,7 +56,9 @@
         </div>
     </header>
     <div id="divFromHeader">
-    <div style="align-self: center;">Мы что нибудь придумаем...</div>
+        <div id="results">
+            <p style="font-weight: bold; font-size: 20px;">Избранные товары</p>
+        </div>
     </div>
     <footer>
         <div class="footer-content">
@@ -112,6 +115,6 @@
 </body>
 
 <script src="../js/Layout.js"></script>
-<script src="../js/catalog.js"></script>
+<script src="../js/favourite.js"></script>
 
 </html>

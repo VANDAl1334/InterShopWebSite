@@ -99,3 +99,16 @@
     width: 100%;
     background-color: #e6e6e6;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.productFavourite:hover {
+    color: transparent;
+}

@@ -1,4 +1,4 @@
-let favouriteProductsId;
+let favouriteProducts;
 
 getFavouriteProducts();
 
@@ -14,38 +14,54 @@ async function getFavouriteProducts() {
 
 
     if (response.ok) {
-        favouriteProductsId = await response.json();
+        favouriteProducts = await response.json();
     }
 }
 
-// Загрузка товаров по скидке
-async function loadDiscounts()
-{
+// Загрузка товаров
+async function loadProducts(nameFilter) {
+    nameFilter = nameFilter === undefined ? "" : nameFilter;
+    const search = document.getElementById("tb_search");
+    search.value = nameFilter;
 
-    const response = await fetch(`/api/Product?discountOnly=true`, {
+    deletePreviousResults();
+
+    const response = await fetch(`/api/Product?nameFilter=${nameFilter}`, {
         method: "GET",
         headers: {
             "Accept": "application/json"
         }
     });
 
-    if(response.ok)
-    {
+    if (response.ok) {
         data = await response.json();
-        generateDiscounts(data);
+        generateProducts(data);
     }
 }
 
-// Создание списка товаров по скидке
-async function generateDiscounts(jsonData)
-{
-    var root = document.getElementById("content");
+// Удаление предыдущих результатов 
+function deletePreviousResults() {
+    const root = document.getElementById("results");
+
+    root.innerHTML = "";
+}
+
+// Создание списка товаров
+async function generateProducts(jsonData) {
+    var root = document.getElementById("results");
 
     // Строка "Результаты поиска"
     const resultString = document.createElement("p");
     resultString.setAttribute("style", "font-size: 30px; margin: 10px;");
-    resultString.innerHTML = "Акции";
+    resultString.innerHTML = "Результаты поиска";
     root.appendChild(resultString);
+
+    // Количество найденых товаров
+    const result = document.createElement("p");
+    result.innerHTML = `Всего найдено ${jsonData.length} товаров`;
+    result.setAttribute("style", "margin: 10px");
+
+    root.append(result);
 
     for (let i = 0; i < jsonData.length; i++) {
         // Контейнер результатов 
@@ -87,14 +103,14 @@ async function generateDiscounts(jsonData)
 
             let favouriteProductId = Number(e.currentTarget.parentElement.id);
 
-            if (favouriteProductsId.includes(favouriteProductId)) {
-                let index = favouriteProductsId.indexOf(favouriteProductId);
-                favouriteProductsId.splice(index, 1);
+            if (favouriteProducts.includes(favouriteProductId)) {
+                let index = favouriteProducts.indexOf(favouriteProductId);
+                favouriteProducts.splice(index, 1);
 
                 e.currentTarget.setAttribute("style", `background-image: url("../icons/Favourite_empty.png");`);
             }
             else {
-                favouriteProductsId.push(favouriteProductId);
+                favouriteProducts.push(favouriteProductId);
                 e.currentTarget.setAttribute("style", `background-image: url("../icons/Favourite.png");`);
             }
 
@@ -105,14 +121,14 @@ async function generateDiscounts(jsonData)
                     "Accept": "application/json",
                     "Authorization": "Bearer " + sessionStorage.TokenKey
                 },
-                body: JSON.stringify(favouriteProductsId)
+                body: JSON.stringify(favouriteProducts)
             });
 
             if (!response.ok) {
                 console.log("[Favourite] Status: " + response.status);
             }
         });
-        if (!favouriteProductsId.includes(jsonData[i]["id"])) {
+        if (!favouriteProducts.includes(jsonData[i]["id"])) {
             toFavourite.setAttribute("style", `background-image: url("../icons/Favourite_empty.png");`);
         }
 
@@ -153,7 +169,16 @@ async function generateDiscounts(jsonData)
         container.appendChild(btnBasket);
 
         root.append(container);
+
     }
 }
 
-loadDiscounts();
+// Загружаем товары при загрузке страницы
+let nameFilter = getParam("nameFilter");
+loadProducts(nameFilter);
+document.getElementById("tb_search").innerText = nameFilter;
+
+function getParam(name) {
+    if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
+        return decodeURIComponent(name[1]);
+}
