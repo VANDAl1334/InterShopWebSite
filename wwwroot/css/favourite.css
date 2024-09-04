@@ -38,10 +38,6 @@
     cursor: pointer;
 }
 
-.productFavourite:hover {
-    color: transparent;
-}
-
 .productPreview {
     width: 180px;
     height: fit-content;
@@ -96,7 +92,7 @@
     user-select: none;
 }
 
-.content {
+#results {
     display: flex;
     flex-direction: column;
     align-self: center;

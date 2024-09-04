@@ -17,6 +17,11 @@
     height: 100%;
 }
 
+
+.productFavourite:hover {
+    color: transparent;
+}
+
 .discounts {
     display: flex;
     flex-wrap: nowrap;
@@ -28,7 +33,7 @@
     min-width: 350px;
     height: fit-content;
     display: grid;
-    grid-template-columns: 1fr 5fr 1px;
+    grid-template-columns: 1fr 5fr 30px;
     grid-template-rows: 40px auto auto auto;
     background-color: rgb(255, 255, 255);
     padding: 10px;
@@ -111,4 +116,21 @@
     margin-left: 10px;
     margin-top: 10px;
     margin-bottom: 0px;
+}
+
+.productFavourite {
+    width: 20px;
+    height: w0px;
+    grid-column: 3 / 3;
+    grid-row: 1 / 1;
+    justify-self: end;
+    background-image: url("../icons/Favourite_empty.png");
+    background-size: contain;
+    background-color: rgba(255, 255, 255, 0);
+    border: 0px;
+    cursor: pointer;
+
+    justify-self: center;
+    align-self: flex-start;
+    margin-top: 0px;
 }

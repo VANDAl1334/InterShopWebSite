@@ -2,8 +2,6 @@ let productData;
 
 getProductData(getParam("productId"));
 
-
-
 async function getProductData(id) {
     const response = await fetch(`/api/Product/${id}`,
         {
@@ -95,7 +93,7 @@ function generateProductPage() {
         comment.appendChild(userRating);
 
         const userMessage = document.createElement("p");
-        userMessage.setAttribute("class", "userMessage");
+        userMessage.setAttribute("class", "commentMessage");
         userMessage.innerHTML = commentInfo["message"];
         comment.appendChild(userMessage);
 
