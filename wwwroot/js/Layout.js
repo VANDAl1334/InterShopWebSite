@@ -42,7 +42,10 @@ ProfileHeader.addEventListener("click", async e => {
 document.getElementById("btn_search").addEventListener("click", async e => {
     e.preventDefault();
     const search = document.getElementById("tb_search");
-    location.href = `${location.origin}/catalog?nameFilter=${search.value}`; 
+    loadProducts(search.value);
+    location.href = `${location.origin}/catalog?nameFilter=${search.value}`;
+    // history.pushState(null, "", `${location.origin}/Catalog?nameFilter=${search.value}`); // переход на страницу без ее обновления
+    // FocusHeader("Catalog");    
 });
 async function ParseError(response) {
     let resJson = await response.json();
@@ -61,4 +64,37 @@ function getKeysWithValues(response) {
     if (boolean)
         return false;
     return true;
+}
+
+function getParam(name) {
+    if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
+
+        return decodeURIComponent(name[1]);
+}
+
+let validatemail = (mail) => {
+    return mail.match(
+        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
+const validateMail = (mail) => {
+    let errmsg = document.getElementById("errmsgMail");
+
+    if (validatemail(mail.value)) {
+        errmsg.innerText = "";
+        mail.style.background = "white";
+        return false;
+    } else {
+        errmsg.innerText = "Введен неверный формат почты";
+        errmsg.style.color = "red";
+        mail.style.background = "red";
+        return true;
+    }
+}
+function ParseHttpStatus(response) {
+    if (response.status >= 500)
+        alert(`${response.statusText} ${response.status} Оллах не отвичает жыдким`)
+    else if (response.status >= 400)
+        alert(response.statusText + " " + response.status)
 }

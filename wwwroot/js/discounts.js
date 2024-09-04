@@ -3,6 +3,12 @@ let favouriteProductsId;
 getFavouriteProducts();
 
 async function getFavouriteProducts() {
+
+    if(sessionStorage.TokenKey == undefined)
+            {
+                return;
+            }
+
     const response = await fetch(`/api/favourite`,
         {
             method: "GET",
@@ -85,6 +91,13 @@ async function generateDiscounts(jsonData)
         toFavourite.addEventListener("click", async e => {
             e.preventDefault();
 
+            if(sessionStorage.TokenKey == undefined)
+            {
+                alert("Для добавления товара в избранное необходимо войти в какаунт");
+                return;
+            }
+
+
             let favouriteProductId = Number(e.currentTarget.parentElement.id);
 
             if (favouriteProductsId.includes(favouriteProductId)) {
@@ -112,8 +125,10 @@ async function generateDiscounts(jsonData)
                 console.log("[Favourite] Status: " + response.status);
             }
         });
-        if (!favouriteProductsId.includes(jsonData[i]["id"])) {
-            toFavourite.setAttribute("style", `background-image: url("../icons/Favourite_empty.png");`);
+        if (sessionStorage.TokenKey != undefined) {
+            if (favouriteProductsId.includes(jsonData[i]["id"])) {
+                toFavourite.setAttribute("style", `background-image: url("../icons/Favourite.png");`);
+            }
         }
 
         container.appendChild(toFavourite);

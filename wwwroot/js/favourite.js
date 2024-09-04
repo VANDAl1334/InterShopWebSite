@@ -112,8 +112,8 @@ async function generateProducts(jsonData) {
                 console.log("[Favourite] Status: " + response.status);
             }
         });
-        if (!favouriteProductsId.includes(jsonData[i]["id"])) {
-            toFavourite.setAttribute("style", `background-image: url("../icons/Favourite_empty.png");`);
+        if (favouriteProductsId.includes(jsonData[i]["id"])) {
+            toFavourite.setAttribute("style", `background-image: url("../icons/Favourite.png");`);
         }
 
         container.appendChild(toFavourite);

@@ -3,6 +3,11 @@ let favouriteProductsId;
 getFavouriteProducts();
 
 async function getFavouriteProducts() {
+
+    if (sessionStorage.TokenKey == undefined) {
+        return;
+    }
+
     const response = await fetch(`/api/favourite`,
         {
             method: "GET",
@@ -35,8 +40,7 @@ async function loadDiscounts() {
 }
 
 // загружает список товаров указанной категории
-async function loadCategory(categoryId)
-{
+async function loadCategory(categoryId) {
     const response = await fetch(`/api/Product?categoryId=${categoryId}`, {
         method: "GET",
         headers: {
@@ -102,6 +106,12 @@ function generateDiscounts(jsonData, sectionName) {
         toFavourite.addEventListener("click", async e => {
             e.preventDefault();
 
+            if(sessionStorage.TokenKey == undefined)
+            {
+                alert("Для добавления товара в избранное необходимо войти в какаунт");
+                return;
+            }
+
             let favouriteProductId = Number(e.currentTarget.parentElement.id);
 
             if (favouriteProductsId.includes(favouriteProductId)) {
@@ -129,8 +139,10 @@ function generateDiscounts(jsonData, sectionName) {
                 console.log("[Favourite] Status: " + response.status);
             }
         });
-        if (!favouriteProductsId.includes(jsonData[i]["id"])) {
-            toFavourite.setAttribute("style", `background-image: url("../icons/Favourite_empty.png");`);
+        if (sessionStorage.TokenKey != undefined) {
+            if (favouriteProductsId.includes(jsonData[i]["id"])) {
+                toFavourite.setAttribute("style", `background-image: url("../icons/Favourite.png");`);
+            }
         }
 
         container.appendChild(toFavourite);
@@ -168,7 +180,7 @@ function generateDiscounts(jsonData, sectionName) {
         btnBasket.innerHTML = "В корзину"
         btnBasket.setAttribute("class", "productToBasket");
         container.appendChild(btnBasket);
-        
+
         discounts.append(container);
     }
 }
