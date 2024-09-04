@@ -13,18 +13,13 @@ html {
 }
 
 body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-}
-
-.catalogBody {
     display: flex;
     flex-direction: column;
     overflow: visible;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
+    margin: 0px;
 }
 
 a {
@@ -128,8 +123,9 @@ form {
     flex-direction: column;
 }
 
-.divFromHeader {
-    margin-top: 200px;
+#divFromHeader {
+    margin-top: 170px;
+    width: 70%;
 }
 
 #dataProfileList {
@@ -161,5 +157,5 @@ button {
 
 button:hover {
     color: black;
-    background: rgb(150, 212, 199);
+    background-color: rgb(150, 212, 199);
 }
