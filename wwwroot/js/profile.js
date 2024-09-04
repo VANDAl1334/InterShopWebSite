@@ -94,4 +94,5 @@ document.getElementById("deleteUserConfirm").addEventListener("click", async e =
         },
     })
     ParseHttpStatus(response);
+    location.reload();
 })
