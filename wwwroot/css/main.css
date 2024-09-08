@@ -1,0 +1,214 @@
+@import url("./modules/header.css");
+@import url("./modules/footer.css");
+
+html {
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+* {
+    font-size: 20px;
+    font-family: 'Roboto';
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-family: 'Times New Roman';
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 30px;
+    text-align: center;
+    margin: 0 0 15px 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-div {
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    background: rgba(175, 175, 175, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(175, 175, 175, 0.3);
+    border-radius: 30px;
+    border-color: black;
+    padding: 15px 50px;
+    height: 100%;
+}
+
+#submitRegister {
+    width: fit-content;
+    padding: 10px 25px;
+}
+
+#submitLogin {
+    width: fit-content;
+    padding: 10px 25px;
+}
+
+.form-inside-register {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto auto auto auto auto;
+}
+
+.form-inside-login {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto auto auto;
+}
+
+.listDataProfile {
+    display: flex;
+    align-items: center;
+}
+
+.dataProfile {
+    display: inline-block;
+    padding: 0px 10px 0px 10px;
+    background: rgb(219, 219, 219);
+    border-radius: 5px;
+}
+
+.errormsg {
+    background-color: transparent;
+    color: red;
+    position: absolute;
+}
+
+.error::before {
+    width: 0;
+    height: 0;
+}
+
+#instanseMail {
+    height: 37px;
+    width: 37px;
+    border-radius: 50px;
+    align-self: center;
+}
+
+.div2 {
+    display: grid;
+    justify-items: center;
+}
+
+.div3 {
+    padding: 0 0 20px 0;
+}
+
+
+
+#dataProfileList {
+
+    align-self: left;
+}
+
+#showPassword:hover {
+    background: #2c2c2c;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 20px;
+    margin: 25px 5px 5px 5px;
+    border-radius: 20px;
+}
+
+button {
+    padding: 10px;
+    background: transparent;
+    color: black;
+    border: 1px solid black;
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 15px 0 0 0;
+}
+
+button:hover {
+    color: black;
+    background-color: rgb(150, 212, 199);
+}
+
+a {
+    color: #0077cc;
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 26px;
+    transition: color 0.3s ease;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+nav ul li a:hover {
+    background: #797979;
+    color: #ffffff;
+}
+
+#content {
+    background-color: #e6e6e6;
+    margin: auto;
+    width: 70%;
+    display: inline-grid;
+    height: 100%;
+    padding: 10px;
+}
+
