@@ -1,0 +1,40 @@
+.geoPoint {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 20px;
+    border-width: 8px;
+    background-color: white;
+    border-color: red;
+    border-style: solid;
+    cursor: pointer;
+    display: block;
+    margin-top: -20px;
+    margin-left: -20px;
+}
+
+#map {
+    width: 70%;
+    aspect-ratio: 1;
+    margin: 20px;
+    border: 2px solid black;
+}
+
+.address {
+    margin: 0px;
+    margin-left: 10px;
+}
+.addresessLabel {
+    font-size: 28px;
+    margin: 10px;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+}
+
+#content {
+    background-color: transparent;
+}

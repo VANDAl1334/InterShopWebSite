@@ -1,15 +1,17 @@
 <header>
     <div class="header-content">
         <div class="up-level">
-            <div class="logo">
-                <img src="../icons/Logo.png" />
-                <a href="/">InterShop</a>
-            </div>
+            <a href="/">
+                <div class="logo">
+                    <img src="../icons/Logo.png" />
+                    <p>InterShop</p>
+                </div>
+            </a>
             <nav>
                 <ul>
-                    <li><a id="Discounts" href="/Discounts">Акции</a></li>
-                    <li><a id="Catalog" href="/Catalog">Каталог</a></li>
-                    <li><a id="Shops" href="/Shops">Магазины</a></li>
+                    <li><a id="Discounts" href="/discounts">Акции</a></li>
+                    <li><a id="Catalog" href="/catalog">Каталог</a></li>
+                    <li><a id="Shops" href="/shops">Магазины</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
@@ -19,20 +21,20 @@
         </div>
         <div class="down-level">
             <div style="display: flex; align-self: center;">
-                <input id="tb_search" type="text" placeholder="Поиск">
+                <input id="tb_search" type="text">
                 <button id="btn_search"></button>
             </div>
             <button class="header-button" id="favourite">
-                <p>Избранное</p>
-                <img src="../icons/Favourite.png">
+                <p style="height: 100%;width: 100px;display: flex;align-items: center;">Избранное</p>
+                <img src="../icons/Favourite.png" style="align-self: center; width: 30px; height: 30px;">
             </button>
             <button class="header-button" id="basket">
-                <p>Корзина</p>
-                <img src="../icons/Basket.png">
+                <p style="height: 100%;width: 100px;display: flex;align-items: center;">Корзина</p>
+                <img src="../icons/Basket.png" style="align-self: center; width: 30px; height: 30px;">
             </button>
             <button class="header-button" id="profile">
-                <p>Профиль</p>
-                <img src="../icons/Profile.png">
+                <p style="height: 100%;width: 100px;display: flex;align-items: center;">Профиль</p>
+                <img src="../icons/Profile.png" style="align-self: center; width: 30px; height: 30px;">
             </button>
         </div>
     </div>
