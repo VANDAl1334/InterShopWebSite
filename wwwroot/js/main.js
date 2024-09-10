@@ -38,14 +38,14 @@ window.onload = async e => {
 
         content.style.marginTop = header[0].clientHeight.toString() + "px";
 
+        main();
+
         if (/catalog\b/.test(location.pathname)) { FocusHeader(CatalogHeader); return; }
         if (/shops\b/.test(location.pathname)) { FocusHeader(ShopsHeader); return; }
         if (/discounts\b/.test(location.pathname)) { FocusHeader(DiscountsHeader); return; }
         if (/profile\b/.test(location.pathname)) { FocusHeader(ProfileHeader); return; }
         if (/basket\b/.test(location.pathname)) { FocusHeader(BasketHeader); return; }
         if (/favourite\b/.test(location.pathname)) { FocusHeader(FavouriteHeader); return; }
-
-        main();
     });
 };
 
