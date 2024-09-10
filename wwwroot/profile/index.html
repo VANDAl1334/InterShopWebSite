@@ -5,55 +5,14 @@
     <title>InterShop | Профиль</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../css/site.css" />
-    <link rel="stylesheet" href="../css/Layout.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/pages/profile.css" />
     <link rel="icon" href="../icons/favicon.ico" type="image/x-icon" />
 </head>
 
 <body>
-    <header>
-        <div class="header-content">
-            <div class="up-level">
-                <a href="/">
-                    <div class="logo">
-                        <img src="../icons/Logo.png" />
-                        <p>InterShop</p>
-                    </div>
-                </a>
-                <nav>
-                    <ul>
-                        <li><a id="Discounts" href="/discounts">Акции</a></li>
-                        <li><a id="Catalog" href="/catalog">Каталог</a></li>
-                        <li><a id="Shops" href="/shops">Магазины</a></li>
-                    </ul>
-                </nav>
-                <div class="header-actions">
-                    <a>Номер горячей линии</a><br />
-                    <a>+7-042-431-32-12</a>
-                </div>
-            </div>
-            <div class="down-level">
-                <div style="display: flex; align-self: center;">
-                    <input id="tb_search" type="text">
-                    <button id="btn_search"></button>
-                </div>
-                <button class="header-button" id="favourite">
-                    <p>Избранное</p>
-                    <img src="../icons/Favourite.png">
-                </button>
-                <button class="header-button" id="basket">
-                    <p>Корзина</p>
-                    <img src="../icons/Basket.png">
-                </button>
-                <button class="header-button" id="profile">
-                    <p>Профиль</p>
-                    <img src="../icons/Profile.png">
-                </button>
-            </div>
-        </div>
-    </header>
-    <div id="divFromHeader">
+    <div id="headerContainer"></div>
+    <div id="content">
         <div id="dataProfileList" hidden>
             <form>
                 <h1>Профиль:</h1>
@@ -62,12 +21,12 @@
                         <li class="listDataProfile">Логин:</li>
                         <label class="dataProfile" name="login"></label>
                     </div>
-                    <div style="display: flex; flex-direction: row; align-items: baseline;">
+                    <div style="display: flex; flex-direction: row; align-items: baseline; margin-top: inherit;">
                         <li class="listDataProfile">Почта:</li>
                         <label class="dataProfile" type="text" name="mail"></label>
                         <input id="mail" hidden />
-                        <div>
-                            <img src="../icons/close.png" id="instanseMail">
+                        <div style="display: contents;">
+                            <img src="../icons/close.png" title="Почта не подтверждена" id="instanseMail">
                         </div>
                     </div>
                 </ul>
@@ -77,14 +36,16 @@
                 <button id="resetPassword">Сброс пароля</button>
                 <div style="display: flex; align-self: end; flex-direction: column;">
                     <button id="btnExit"
-                        style="background: red; border: 0; box-shadow: 0 4px 30px rgba(0, 0, 1, 0.5);">Выход из
-                        пользователя</button>
-                    <button style="background: red; border: 0; box-shadow: 0 4px 30px rgba(0, 0, 1, 0.5);"
+                        style="color: #ffffff; background: rgb(189, 0, 0); border: 0; box-shadow: 0 4px 30px rgba(0, 0, 1, 0.5);">
+                        Выйти из аккаунта</button>
+                    <button
+                        style="color: #ffffff; background: rgb(189, 0, 0); border: 0; box-shadow: 0 4px 30px rgba(0, 0, 1, 0.5);"
                         id="deleteUser">Удалить аккаунт</button>
                     <label id="deleteUserLabel" hidden>Вы уверены?</label>
                     <div style="display: flex; flex-direction: row;">
-                        <button style="background: red; border: 0; box-shadow: 0 4px 30px rgba(0, 0, 1, 0.5);"
-                            id="deleteUserConfirm" hidden>Удалить</button>
+                        <button id="deleteUserConfirm"
+                            style="color: #ffffff; background: rgb(189, 0, 0); border: 0; box-shadow: 0 4px 30px rgba(0, 0, 1, 0.5);"
+                            hidden>Удалить</button>
                         <button id="deleteUserCancel" hidden>Отмена</button>
                     </div>
                 </div>
@@ -93,61 +54,10 @@
         </div>
 
     </div>
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Компания</h3>
-                <p>О компании</p>
-                <p>Политика конфиденциальности</p>
-                <p>Персональные данные</p>
-                <p>Правила продаж</p>
-                <p>Правила пользования сайтом</p>
-                <p>На информационном ресурсе применяются рекомендательные технологии</p>
-                <h4>Скачайте мобильное приложение</h4>
-                <div style="display: flex; flex-direction:row;">
-                    <div style="display: flex; flex-direction:row; background:grey; margin-right:10px">
-                        <img src="" />
-                        <p>App Store</p>
-                    </div>
-                    <div style="display: flex; flex-direction:row; background:grey; ">
-                        <img src="" />
-                        <p>Play Market</p>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>Покупателям</h3>
-                <p>Как оформить заказ</p>
-                <p>Способы оплаты</p>
-                <p>Кредиты</p>
-                <p>Доставка</p>
-                <p>Статус заказа</p>
-                <p>Обмен, возврат, гарантия</p>
-            </div>
-            <div class="footer-section">
-                <h3>Контакты</h3>
-                <ul>
-                    <li>Адрес магазина: Улица Примерная, 123</li>
-                    <li>Телефон горячей линии: +7 (123) 456-78-90</li>
-                    <li>Следите за акциями и новинками Email: info@example.com</li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Социальные сети</h3>
-                <ul>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Instagram</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 - InterShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></p>
-        </div>
-    </footer>
+    <div id="footerContainer"></div>
 </body>
 
-<script src="../js/Layout.js"></script>
-<script src="../js/profile.js"></script>
+<script src="../js/pages/profile.js"></script>
+<script src="../js/main.js"></script>
 
 </html>

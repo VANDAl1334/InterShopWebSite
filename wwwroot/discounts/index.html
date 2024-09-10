@@ -5,114 +5,23 @@
     <title>InterShop | Акции</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../css/site.css" />
-    <link rel="stylesheet" href="../css/Layout.css" />
-    <link rel="stylesheet" href="../css/disounts.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/pages/disounts.css" />
+    <link rel="stylesheet" href="../css/elements/popup.css" />
     <link rel="icon" href="../icons/logo-icon.png" type="image/x-icon" />
 </head>
 
 <body class="catalogBody">
-    <header>
-        <div class="header-content">
-            <div class="up-level">
-                <a href="/">
-                    <div class="logo">
-                        <img src="../icons/Logo.png" />
-                        <p>InterShop</p>
-                    </div>
-                </a>
-                <nav>
-                    <ul>
-                        <li id="Discounts"><a href="/discounts">Акции</a></li>
-                        <li id="Catalog"><a href="/catalog">Каталог</a></li>
-                        <li id="Shops"><a href="/shops">Магазины</a></li>
-                    </ul>
-                </nav>
-                <div class="header-actions">
-                    <a>Номер горячей линии</a><br />
-                    <a>+7-042-431-32-12</a>
-                </div>
-            </div>
-            <div class="down-level">
-                <div style="display: flex; align-self: center;">
-                    <input id="tb_search" type="text">
-                    <button id="btn_search"></button>
-                </div>
-                <button class="header-button" id="favourite">
-                    <p>Избранное</p>
-                    <img src="../icons/Favourite.png">
-                </button>
-                <button class="header-button" id="basket">
-                    <p>Корзина</p>
-                    <img src="../icons/Basket.png">
-                </button>
-                <button class="header-button" id="profile">
-                    <p>Профиль</p>
-                    <img src="../icons/Profile.png">
-                </button>
-            </div>
-        </div>
-    </header>
-    <div id="divFromHeader">
-        <div id="content" class="content" style="display: inline-grid;">
-        </div>
-    </div>
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Компания</h3>
-                <p>О компании</p>
-                <p>Политика конфиденциальности</p>
-                <p>Персональные данные</p>
-                <p>Правила продаж</p>
-                <p>Правила пользования сайтом</p>
-                <p>На информационном ресурсе применяются рекомендательные технологии</p>
-                <h4>Скачайте мобильное приложение</h4>
-                <div style="display: flex; flex-direction:row;">
-                    <div style="display: flex; flex-direction:row; background:grey; margin-right:10px">
-                        <img src="" />
-                        <p>App Store</p>
-                    </div>
-                    <div style="display: flex; flex-direction:row; background:grey; ">
-                        <img src="" />
-                        <p>Play Market</p>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>Покупателям</h3>
-                <p>Как оформить заказ</p>
-                <p>Способы оплаты</p>
-                <p>Кредиты</p>
-                <p>Доставка</p>
-                <p>Статус заказа</p>
-                <p>Обмен, возврат, гарантия</p>
-            </div>
-            <div class="footer-section">
-                <h3>Контакты</h3>
-                <ul>
-                    <li>Адрес магазина: Улица Примерная, 123</li>
-                    <li>Телефон горячей линии: +7 (123) 456-78-90</li>
-                    <li>Следите за акциями и навинками Email: info@example.com</li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Социальные сети</h3>
-                <ul>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Instagram</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 - InterShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></p>
-        </div>
-    </footer>
+    <div id="headerContainer"></div>
+    <div id="content"></div>
+
+    <div id="popupContainer"></div>
+
+    <div id="footerContainer"></div>
 </body>
 
-<script src="../js/Layout.js"></script>
-<script src="../js/discounts.js"></script>
+<script src="../js/modules/m_product.js"></script>
+<script src="../js/pages/discounts.js"></script>
+<script src="../js/main.js"></script>
 
 </html>
