@@ -68,7 +68,8 @@ async function createProductList(products, favouriteProducts) {
         // Контейнер товара 
         const container = document.createElement("div");
         // В качестве id контейнера задаём id товара
-        container.setAttribute("id", products[i]["id"]);
+        container.setAttribute("id", i);
+        container.setAttribute("productId", products[i].id);
         container.setAttribute("class", "productContainer");
 
         // Превью товара
@@ -85,7 +86,7 @@ async function createProductList(products, favouriteProducts) {
         name.addEventListener("click", async e => {
             e.preventDefault();
 
-            location.href = `${location.origin}/product?productId=${e.currentTarget.parentElement.id}`;
+            location.href = `${location.origin}/product?productId=${e.currentTarget.parentElement.getAttribute("productId")}`;
         });
 
         // Описание товара
@@ -107,7 +108,7 @@ async function createProductList(products, favouriteProducts) {
                 return;
             }
 
-            let favouriteProductId = Number(e.currentTarget.parentElement.id);
+            let favouriteProductId = products[Number(e.currentTarget.parentElement.id)].id;
             let favouriteSrc;
 
             if (favouriteProducts.includes(favouriteProductId)) {
@@ -125,7 +126,7 @@ async function createProductList(products, favouriteProducts) {
             const sameProducts = document.getElementsByClassName("productContainer");
 
             for (const element of sameProducts) {
-                if (element.id == favouriteProductId) {
+                if (element.getAttribute("productId") == favouriteProductId) {
                     element.getElementsByClassName("productFavourite")[0]
                         .setAttribute('style', favouriteSrc);
                 }
@@ -185,10 +186,74 @@ async function createProductList(products, favouriteProducts) {
         const btnBasket = document.createElement("btn");
         btnBasket.innerHTML = "В корзину"
         btnBasket.setAttribute("class", "productToBasket");
+        btnBasket.addEventListener("click", async e => {
+            e.preventDefault();
+
+            const overlay = document.getElementById("overlay");
+            const popup = document.getElementById("popup");
+
+            const basketProduct = document.getElementById("basketProduct");
+            const basketProductVariants = document.getElementById("basketProductVariants");
+          
+            const currentProduct = await getProduct(products[Number(e.currentTarget.parentElement.id)].id);
+            basketProduct.innerHTML = currentProduct.name;
+            basketProductVariants.replaceChildren();
+            currentProduct["productVariants"].forEach(productVariant => {
+                const basketProductVariant = document.createElement("option");
+                basketProductVariant.setAttribute("value", productVariant.id);
+                basketProductVariant.innerHTML = productVariant.name;
+
+                basketProductVariants.appendChild(basketProductVariant);
+            });
+
+            overlay.hidden = false;
+            popup.hidden = false;
+        });
         container.appendChild(btnBasket);
 
         root.append(container);
     }
+
+    // popup добавление в корзину
+    document.getElementById("btnBasketCancel").addEventListener("click", async e => {
+        e.preventDefault();
+
+        const overlay = document.getElementById("overlay");
+        const popup = document.getElementById("popup");
+
+        overlay.hidden = true;
+        popup.hidden = true;
+    });
+
+    document.getElementById("btnBasketAdd").addEventListener("click", async e => {
+        e.preventDefault();
+
+        const overlay = document.getElementById("overlay");
+        const popup = document.getElementById("popup");
+
+        const basketProductVariants = document.getElementById("basketProductVariants");
+        const basketProductCount = document.getElementById("basketProductCount");
+
+        const response = await fetch(`/api/basket?productVariantId=${basketProductVariants.value}&count=${basketProductCount.value}`, {
+            method: "PATCH",
+            headers: {
+                "Accept": "application/json",
+                "Authorization": `Bearer ${sessionStorage.TokenKey}`
+            }
+        });
+
+        if(response.ok)
+        {
+            alert("Товар добавлен в корзину!");
+        }
+        else
+        {
+            console.log("[m_product] status " + response.status);
+        }
+
+        overlay.hidden = true;
+        popup.hidden = true;
+    });
 
     return root;
 }

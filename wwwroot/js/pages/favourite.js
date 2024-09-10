@@ -1,11 +1,12 @@
-
-
 async function main()
 {
     if (sessionStorage.TokenKey === undefined) {
         location.href = `${location.origin}/register`;
     }
     else {
+        // Заугрузка всплывающего окна
+        $("#popupContainer").load("../../popup.html");
+
         const content = document.getElementById("content");
         const label = document.createElement("label");
         label.innerHTML = "Избранное";

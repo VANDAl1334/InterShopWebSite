@@ -1,5 +1,8 @@
 async function main()
 {
+    // Заугрузка всплывающего окна
+    $("#popupContainer").load("../../popup.html");
+
     let favouriteProducts = await getFavouriteProducts();
     let products = await getProducts("", 0, true);
 

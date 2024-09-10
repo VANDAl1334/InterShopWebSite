@@ -38,8 +38,6 @@ window.onload = async e => {
 
         content.style.marginTop = header[0].clientHeight.toString() + "px";
 
-        main();
-
         if (/catalog\b/.test(location.pathname)) { FocusHeader(CatalogHeader); return; }
         if (/shops\b/.test(location.pathname)) { FocusHeader(ShopsHeader); return; }
         if (/discounts\b/.test(location.pathname)) { FocusHeader(DiscountsHeader); return; }
@@ -47,7 +45,7 @@ window.onload = async e => {
         if (/basket\b/.test(location.pathname)) { FocusHeader(BasketHeader); return; }
         if (/favourite\b/.test(location.pathname)) { FocusHeader(FavouriteHeader); return; }
 
-        
+        main();
     });
 };
 

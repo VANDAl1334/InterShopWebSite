@@ -1,6 +1,8 @@
-
-
 async function main() {
+
+    // Заугрузка всплывающего окна
+    $("#popupContainer").load("../../popup.html");
+
     let favouriteProducts;
     let nameFilter = getParam("nameFilter");
     nameFilter = nameFilter === undefined ? "" : nameFilter;
@@ -31,9 +33,6 @@ async function main() {
     const productList = await createProductList(products, favouriteProducts);
 
     content.appendChild(productList);
-    //let oldContainer = document.getElementById("productList");
-
-    //oldContainer.replaceWith(productList);
 }
 
 function getParam(name) {

@@ -2,6 +2,9 @@ const categories = ["Офисные компьютеры", "Игровые ко�
 
 async function main()
 {
+    // Заугрузка всплывающего окна
+    $("#popupContainer").load("../../popup.html");
+    
     let favouriteProductsId = await getFavouriteProducts(false);
 
     const root = document.getElementById("content");

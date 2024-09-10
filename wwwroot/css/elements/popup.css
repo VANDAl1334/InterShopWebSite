@@ -1,0 +1,45 @@
+#overlay {
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(68, 68, 68, 0.507);
+}
+
+#popup {
+    background-color: rgb(197, 197, 197);
+    z-index: 104;
+    top:  50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: fit-content;
+    height: fit-content;
+
+    position: absolute;
+    padding: 15px;
+
+    border-radius: 7px;
+}
+
+#popupContent {
+    display: block;
+    background-color: rgb(233, 233, 233);
+    border-radius: 7px;
+    padding: 15px;
+}
+
+#popupContent p {
+    align-self: end;
+    padding: 3px;
+}
+
+#popup div {
+    display: flex;
+}
+
+#basketButtons {
+    justify-content: space-around;
+}
