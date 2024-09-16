@@ -18,8 +18,7 @@ async function getBasket() {
     }
 }
 
-async function deleteBasket(productVariantId)
-{
+async function deleteBasket(productVariantId) {
     if (sessionStorage.TokenKey === undefined) {
         return undefined;
     }
@@ -40,8 +39,7 @@ async function deleteBasket(productVariantId)
     }
 }
 
-async function createBasketList(basket)
-{
+async function createBasketList(basket) {
     var root = document.createElement("productList");
     root.setAttribute("id", "productList");
 
@@ -110,6 +108,15 @@ async function createBasketList(basket)
         divProductCount.appendChild(productCountLabel);
 
         const productCount = document.createElement("input");
+        productCount.addEventListener("change", async e => {
+            e.preventDefault();
+
+            const id = Number(e.currentTarget.parentElement.parentElement.id);
+
+            basket[id].count = Number(e.currentTarget.value);
+            e.currentTarget.parentElement.parentElement.getElementsByClassName("productTotalPrice")[0]
+                .innerHTML = `Сумма: ${calcTotalSum(basket[i].productVariant.cost, basket[i].count, discount)} руб.`;
+        });
         productCount.setAttribute("class", "productCount");
         productCount.setAttribute("value", basket[i].count);
         productCount.setAttribute("min", "1");
@@ -145,14 +152,47 @@ async function createBasketList(basket)
         container.appendChild(divCost);
 
         // Сумма
-        const totalSum = discount == 0 ? basket[i].totalCost : basket[i].totalCost - basket[i].totalCost * (discount / 100);
+        const totalSum = calcTotalSum(basket[i].productVariant.cost, basket[i].count, discount);
         const productTotalSum = document.createElement("p");
         productTotalSum.setAttribute("class", "productTotalPrice");
         productTotalSum.innerHTML = `Сумма: ${totalSum} руб.`;
-    
+
         container.appendChild(productTotalSum);
         root.appendChild(container);
+
+        
+
+        window.onunload = async e => {
+
+            e.preventDefault()
+
+            for(let y = 0; y < basket.length; y++)
+            {
+                if(basket[y] === undefined)
+                    basket.splice(y, 1);
+            }
+
+            const response = await fetch("/api/basket", {
+                method: "PUT",
+                headers: {
+                    "Authorization": `Bearer ${sessionStorage.TokenKey}`,
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(basket)
+            });
+
+            if (!response.ok)
+                alert("Хуйня");
+        };
     }
 
     return root;
+}
+
+function calcTotalSum(price, count, discount)
+{
+    const totalSum = discount == 0 ? price * count :  price * count -  price * count * (discount / 100);
+
+    return totalSum;
 }

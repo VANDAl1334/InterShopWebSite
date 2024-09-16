@@ -37,8 +37,14 @@ window.onload = async e => {
         content = document.getElementById("content");
 
         content.style.marginTop = header[0].clientHeight.toString() + "px";
+        content.style.minHeight = `calc(100vh - ${header[0].clientHeight.toString()}px)`;
 
         main();
+
+        let runningStringPos = 10;
+        
+        setTimeout(runningString, 10, runningStringPos);
+        //runningString();
 
         if (/catalog\b/.test(location.pathname)) { FocusHeader(CatalogHeader); return; }
         if (/shops\b/.test(location.pathname)) { FocusHeader(ShopsHeader); return; }
@@ -48,6 +54,21 @@ window.onload = async e => {
         if (/favourite\b/.test(location.pathname)) { FocusHeader(FavouriteHeader); return; }
     });
 };
+
+async function runningString(runningStringPos)
+{
+    const runString = document.getElementById("runningString");
+
+    runningStringPos = runningStringPos + 1;
+    runString.style.left = runningStringPos + "px";
+
+    if(runningStringPos > document.body.clientWidth)
+    {
+        runningStringPos = -runString.clientWidth;
+    }
+
+    setTimeout(runningString, 20, runningStringPos);
+}
 
 function FocusHeader(chapter) {
     chapter.style.background = "#797979";
@@ -85,9 +106,17 @@ function setEventListeners() {
     });
 }
 
-async function ParseError(response) {
+async function ParseError(response, noKeys) {
     let resJson = await response.json();
-    return getKeysWithValues(resJson);
+
+    if (!noKeys) {
+        
+        return getKeysWithValues(resJson);
+    }
+    else
+    {
+        alert(`${resJson.message}`);
+    }
 }
 function getKeysWithValues(response) {
     let errormsg = document.getElementsByClassName("errormsg");

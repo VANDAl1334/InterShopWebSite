@@ -67,7 +67,7 @@ async function createProductList(products, favouriteProducts) {
     for (let i = 0; i < products.length; i++) {
         // Контейнер товара 
         const container = document.createElement("div");
-        // В качестве id контейнера задаём id товара
+        // В качестве id контейнера задаём индекс массива
         container.setAttribute("id", i);
         container.setAttribute("productId", products[i].id);
         container.setAttribute("class", "productContainer");

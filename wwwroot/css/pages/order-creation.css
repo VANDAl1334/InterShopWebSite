@@ -1,0 +1,43 @@
+#content {
+    background-color: transparent;
+}
+
+#orderDetails {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#orderDetails div {
+    display: flex;
+    width: 100%;
+}
+
+#orderDetails div span {
+    margin: 0px 3px;
+    padding: 3px 8px;
+    background-color: rgb(225, 225, 225);
+    border-radius: 7px;
+    align-self: center;
+}
+
+select {
+    height: fit-content;
+    align-self: center;
+    margin: 14px;
+}
+
+#orderCreateOrder {
+    width: 100%;
+    height: fit-content;
+    align-self: center;
+    background-color: #0e9b2a;
+    color: white;
+}
+
+#orderAddressLabel {
+    visibility: collapse;
+}
+
+#orderAddresses {
+    visibility: collapse;
+}

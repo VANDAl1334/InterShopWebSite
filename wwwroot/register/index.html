@@ -13,33 +13,31 @@
 <body>
     <div id="headerContainer"></div>
     <div id="content">
-        <div class="form-div">
-            <form class="form">
-                <div class="form-inside-register">
-                    <h3 style="grid-row: 1; grid-column: 1 /2;align-self: center;">Регистрация</h3>
-                    <div class="div2" style="grid-row: 2;">
-                        <span id="errmsgLogin" for="login" name="Login" class="errormsg"></span>
-                        <input id="login" placeholder="Логин" />
-                    </div>
-                    <div class="div2" style="grid-row: 3;">
-                        <span id="errmsgMail" for="mail" name="Mail" class="errormsg"></span>
-                        <input id="mail" placeholder="Почта" name="mail" />
-                    </div>
-                    <div class="div2" style="grid-row: 4;">
-                        <span id="errmsgPassword" for="password" name="Password" class="errormsg"></span>
-                        <input id="password" type="password" placeholder="Пароль" />
-                    </div>
-                    <input type="checkbox" id="showPassword" style="width: 30px; height: 30px; grid-row: 4; ">
-                    <div class="div2" style="grid-row: 5;">
-                        <input id="confirmPassword" type="password" placeholder="Подтверждение пароля" />
-                    </div>
-                    <button id="submitRegister" style="grid-row: 6;">Зарегистрироваться</button>
-                    <a href="/login" style="grid-row: 7;">
-                        <p>Есть аккаунт</p>
-                    </a>
+        <form class="form">
+            <div class="form-inside-register">
+                <h3 style="grid-row: 1; grid-column: 1 / span 2;align-self: center;">Регистрация</h3>
+                <div class="div2" style="grid-row: 2;">
+                    <span id="errmsgLogin" for="login" name="Login" class="errormsg"></span>
+                    <input id="login" placeholder="Логин" />
                 </div>
-            </form>
-        </div>
+                <div class="div2" style="grid-row: 3;">
+                    <span id="errmsgMail" for="mail" name="Mail" class="errormsg"></span>
+                    <input id="mail" placeholder="Почта" name="mail" />
+                </div>
+                <div class="div2" style="grid-row: 4;">
+                    <span id="errmsgPassword" for="password" name="Password" class="errormsg"></span>
+                    <input id="password" type="password" placeholder="Пароль" />
+                </div>
+                <input type="checkbox" id="showPassword" style="width: 30px; height: 30px; grid-row: 4; ">
+                <div class="div2" style="grid-row: 5;">
+                    <input id="confirmPassword" type="password" placeholder="Подтверждение пароля" />
+                </div>
+                <button id="submitRegister" style="grid-row: 6;">Зарегистрироваться</button>
+                <a href="/login" style="grid-row: 7;">
+                    <p>Есть аккаунт</p>
+                </a>
+            </div>
+        </form>
     </div>
     <div id="footerContainer"></div>
 </body>

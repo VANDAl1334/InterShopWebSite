@@ -1,0 +1,44 @@
+.orderContainer
+{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #eae9e9;
+    padding: 10px;
+    height: fit-content;
+    border-radius: 10px;
+    margin: 10px 0px;
+}
+
+.orderContainer div {
+    width: 100%;
+    display: flex;
+}
+
+.orderContainer div span {
+    padding: 2px 20px;
+    border-radius: 5px;
+    border-width: 3px;
+    margin: 0px 7px;
+    user-select: none;
+}
+
+.orderNumber {
+    font-size: 24px;
+}
+
+.orderTotalCost {
+    margin: 5px;
+}
+
+.orderDeliveryDate {
+    margin: 5px;
+}
+
+.orderDetails {
+    width: fit-content;
+    height: fit-content;
+}
+
+.orderContainer div p {
+    width: fit-content;
+}
