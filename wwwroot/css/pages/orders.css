@@ -1,4 +1,5 @@
+@import url("../elements/order-list.css");
+
 #content {
     background-color: transparent;
-    display: flex;
 }

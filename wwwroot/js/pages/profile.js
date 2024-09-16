@@ -13,35 +13,40 @@ async function main() {
     if (response.ok) {
         var data = await response.json();
         dataProfile["login"].innerText = data.userJson.login;
-        dataProfile["mail"].innerText = data.userJson.mail;
+        dataProfile["mail"].value = data.userJson.mail;
         if (data.userJson.instanseMail)
             document.getElementById("instanseMail").src = "../icons/check-mark.png";
         else
             document.getElementById("instanseMail").src = "../icons/close.png";
-        document.getElementById("dataProfileList").hidden = false;
+        document.getElementById("content").hidden = false;
     }
     else {
-        document.getElementById("dataProfileList").hidden = true;
+        document.getElementById("content").hidden = true;
         location.href = `${location.origin}/register`;
     }
 
+    // ВЫХОД ИЗ ПОЛЬЗОВАТЕЛЯ
     document.getElementById("btnExit").addEventListener("click", function () {
         sessionStorage.clear();
         location.href = `${location.origin}/register`
     });
+
+    // Изменение почты
     document.getElementById("changeMail").addEventListener("click", async e => {
         e.preventDefault();
 
-        dataProfile["mail"].hidden = true;
-        document.getElementById("mail").hidden = false;
-        document.getElementById("changeMail").hidden = true;
-        document.getElementById("resetPassword").hidden = true;
-        document.getElementById("saveChangeMail").hidden = false;
+        dataProfile["mail"].readOnly = false;
+        document.getElementById("changeMail").style.visibility = "collapse";
+        document.getElementById("saveChangeMail").style.visibility = "visible";
     })
+
+    // Сброс пароля
     document.getElementById("resetPassword").addEventListener("click", async e => {
         e.preventDefault();
         //Перенос на страницу восстановления пароля
     })
+
+    // Сохранить изменения в почте
     document.getElementById("saveChangeMail").addEventListener("click", async e => {
         e.preventDefault();
         if (validateMail(document.getElementById("mail")))
@@ -63,29 +68,29 @@ async function main() {
         }
         else {
             ParseHttpStatus(response);
-            // alert("Httpstatus: " + response["status"]);
         }
-        dataProfile["mail"].hidden = false;
-        document.getElementById("mail").hidden = true;
-        document.getElementById("changeMail").hidden = false;
-        document.getElementById("resetPassword").hidden = false;
-        document.getElementById("saveChangeMail").hidden = true;
         location.reload();
     })
+
+    // Удалить аккаунт
     document.getElementById("deleteUser").addEventListener("click", async e => {
         e.preventDefault();
-        document.getElementById("deleteUser").hidden = true;
-        document.getElementById("deleteUserLabel").hidden = false;
-        document.getElementById("deleteUserCancel").hidden = false;
-        document.getElementById("deleteUserConfirm").hidden = false;
+        document.getElementById("deleteUser").style.visibility = "collapse";
+        document.getElementById("deleteUserLabel").style.visibility = "visible";
+        document.getElementById("deleteUserCancel").style.visibility = "visible";
+        document.getElementById("deleteUserConfirm").style.visibility = "visible";
     })
+
+    // Отменить удаление аккаунта
     document.getElementById("deleteUserCancel").addEventListener("click", async e => {
         e.preventDefault();
-        document.getElementById("deleteUser").hidden = false;
-        document.getElementById("deleteUserLabel").hidden = true;
-        document.getElementById("deleteUserCancel").hidden = true;
-        document.getElementById("deleteUserConfirm").hidden = true;
+        document.getElementById("deleteUser").style.visibility = "visible";
+        document.getElementById("deleteUserLabel").style.visibility = "collapse";
+        document.getElementById("deleteUserCancel").style.visibility = "collapse";
+        document.getElementById("deleteUserConfirm").style.visibility = "collapse";
     })
+
+    // Подтвердить удаление аккаунта
     document.getElementById("deleteUserConfirm").addEventListener("click", async e => {
         e.preventDefault();
         var response = await fetch(`/api/User?loginDTO=${dataProfile["login"].innerText}&isDeleting=true`, {
@@ -97,5 +102,20 @@ async function main() {
         })
         ParseHttpStatus(response);
         location.reload();
-    })
+    });
+
+    // Избранное
+    document.getElementById("profileFavourite").addEventListener("click", async e => {
+        location.href = `${location.origin}/favourite`; 
+    });
+
+    // Корзина
+    document.getElementById("profileBasket").addEventListener("click", async e => {
+        location.href = `${location.origin}/basket`; 
+    });
+
+    // Заказы
+    document.getElementById("profileOrders").addEventListener("click", async e => {
+        location.href = `${location.origin}/orders`; 
+    });
 }

@@ -1,3 +1,43 @@
 #content {
     background-color: transparent;
+
+    grid-column: 70% 30%;
+}
+
+.profileDiv {
+    grid-column: 1 / 1;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+button {
+    width: 250px;
+    height: 40px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    border-radius: 5px;
+    border: 1px solid;
+    border-radius: 10px;
+
+    padding: 5px;
+    margin: 10px;
+}
+
+button p {
+    margin: 0px;
+}
+
+#instanseMail {
+    margin-right: 20px;
+}
+
+.dangButton {
+    color: #ffffff;
+    background: rgb(189, 0, 0);
+    border: 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 1, 0.5);
 }

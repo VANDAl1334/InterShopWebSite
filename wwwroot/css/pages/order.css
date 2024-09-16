@@ -1,0 +1,49 @@
+#content {
+    background-color: transparent;
+}
+
+#orderDetails {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#orderDetails div {
+    display: flex;
+    width: 100%;
+}
+
+#orderDetails div span {
+    margin: 0px 3px;
+    padding: 3px 8px;
+    background-color: rgb(225, 225, 225);
+    border-radius: 7px;
+    align-self: center;
+}
+
+#orderId {
+    margin:  0px 20px 0px 0px;
+}
+
+#pageHeader {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#pageHeader p 
+{
+    font-size: 24px;
+    margin: 0px;
+    align-self: end;
+}
+
+#pageHeader span 
+{
+    font-size: 21px;
+    padding: 2px 20px;
+    border-radius: 5px;
+    border-width: 3px;
+    margin: 0px 7px;
+    user-select: none;
+    height: fit-content;
+    align-self: end;
+}

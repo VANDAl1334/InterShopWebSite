@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>InterShop | Информация о заказе</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/pages/order.css" />
+    <link rel="icon" href="../icons/favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+
+    <div id="headerContainer"></div>
+
+    <div id="content">
+        <div id="pageHeader">
+            <h2 id="orderId"></h2>
+            <p>Статус заказа:</p>
+            <span id="orderStatus"></span>
+        </div>        
+        <h3>Состав заказа</h3>
+        <table id="orderComposition">
+            <th>Товар</th>
+            <th>Количество</th>
+            <th>Стоимость</th>
+            <th>Сумма</th>
+        </table>
+        <p id="orderTotalCost"></p>
+        <div id="orderDetails">
+            <div>
+                <p>Тип доставки:</p>
+                <span id="orderDeliveryType"></span>
+            </div>
+            <div>
+                <p id="orderShopLabel">Точка выдачи:</p>
+                <span id="orderShop"></span>
+            </div>
+            <div>
+                <p id="orderAddressLabel" hidden="true">Адрес доставки:</p>
+                <span id="orderAddress" hidden="true"></span>
+            </div>
+            <div>
+                <p>Примерная дата доставки:</p>
+                <span id="orderDeliveryDate"></span>
+            </div>
+            <div>
+                <p>Вид оплаты:</p>
+                <span id="orderPaymentType"></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="footerContainer"></div>
+
+</body>
+
+
+<script src="../js/modules/m_order.js"></script>
+<script src="../js/pages/order.js"></script>
+<script src="../js/main.js"></script>
+
+</html>

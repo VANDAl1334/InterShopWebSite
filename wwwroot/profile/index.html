@@ -13,46 +13,50 @@
 <body>
     <div id="headerContainer"></div>
     <div id="content">
-        <div id="dataProfileList" hidden>
-            <form>
-                <h1>Профиль:</h1>
-                <ul style="list-style-type: none;">
-                    <div style="display: flex; flex-direction: row;">
-                        <li class="listDataProfile">Логин:</li>
-                        <label class="dataProfile" name="login"></label>
-                    </div>
-                    <div style="display: flex; flex-direction: row; align-items: baseline; margin-top: inherit;">
-                        <li class="listDataProfile">Почта:</li>
-                        <label class="dataProfile" type="text" name="mail"></label>
-                        <input id="mail" hidden />
-                        <div style="display: contents;">
-                            <img src="../icons/close.png" title="Почта не подтверждена" id="instanseMail">
-                        </div>
-                    </div>
-                </ul>
-                <span id="errmsgMail"></span>
-                <button id="changeMail">Изменить почту</button>
-                <button id="saveChangeMail" hidden>Сохранить изменения</button>
-                <button id="resetPassword">Сброс пароля</button>
-                <div style="display: flex; align-self: end; flex-direction: column;">
-                    <button id="btnExit"
-                        style="color: #ffffff; background: rgb(189, 0, 0); border: 0; box-shadow: 0 4px 30px rgba(0, 0, 1, 0.5);">
-                        Выйти из аккаунта</button>
-                    <button
-                        style="color: #ffffff; background: rgb(189, 0, 0); border: 0; box-shadow: 0 4px 30px rgba(0, 0, 1, 0.5);"
-                        id="deleteUser">Удалить аккаунт</button>
-                    <label id="deleteUserLabel" hidden>Вы уверены?</label>
-                    <div style="display: flex; flex-direction: row;">
-                        <button id="deleteUserConfirm"
-                            style="color: #ffffff; background: rgb(189, 0, 0); border: 0; box-shadow: 0 4px 30px rgba(0, 0, 1, 0.5);"
-                            hidden>Удалить</button>
-                        <button id="deleteUserCancel" hidden>Отмена</button>
-                    </div>
-                </div>
-            </form>
-
+        <h1>Профиль:</h1>
+        <div class="profileDiv">
+            <p class="listDataProfile">Логин:</p>
+            <label class="dataProfile" name="login"></label>
         </div>
 
+        <div class="profileDiv">
+            <p class="listDataProfile">Почта:</p>
+            <input class="dataProfile" id="mail" type="text" name="mail" readonly="true"></input>
+            <div style="display: contents;">
+                <img src="../icons/close.png" title="Почта не подтверждена" id="instanseMail">
+            </div>
+            <button id="changeMail">Изменить почту</button>
+            <button id="saveChangeMail" style="visibility: hidden;">Сохранить изменения</button>
+        </div>
+        <span id="errmsgMail" style="grid-column: 1 / 1;"></span>
+
+        <div>
+            <button id="resetPassword">Сбросить пароль</button>
+            <div style="display: flex; align-self: end; flex-direction: column;">
+                <button id="btnExit" class="dangButton">Выйти из аккаунта</button>
+                <button id="deleteUser" class="dangButton">Удалить аккаунт</button>
+                <label id="deleteUserLabel" style="visibility: collapse;">Вы уверены?</label>
+                <div class="profileDiv">
+                    <button id="deleteUserConfirm" class="dangButton" style="visibility: collapse;">Удалить</button>
+                    <button class="dangButton" id="deleteUserCancel" style="visibility: collapse;">Отмена</button>
+                </div>
+            </div>
+        </div>
+
+        <div style="grid-column: 2 / 2; grid-row: 2 / span 3;">
+            <button id="profileFavourite">
+                <p>Избранное</p>
+                <img src="../icons/Favourite.png">
+            </button>
+            <button id="profileBasket">
+                <p>Корзина</p>
+                <img src="../icons/Basket.png">
+            </button>
+            <button id="profileOrders">
+                <p>Заказы</p>
+                <img src="../icons/Orders.png">
+            </button>
+        </div>
     </div>
     <div id="footerContainer"></div>
 </body>

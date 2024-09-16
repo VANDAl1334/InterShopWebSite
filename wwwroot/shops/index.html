@@ -11,24 +11,21 @@
     <script src="https://api-maps.yandex.ru/v3/?apikey=974de46d-1279-434e-be55-86acb92f0b9f&lang=ru_RU"></script>
 </head>
 
-<body style="display: flex; flex-direction: column; overflow: visible; flex-wrap: nowrap;justify-content: space-between;">
+<body
+    style="display: flex; flex-direction: column; overflow: visible; flex-wrap: nowrap;justify-content: space-between;">
     <div id="headerContainer"></div>
     <div id="content">
         <div class="content">
             <div id="map"></div>
-            <div class="Addresess">
-                <div>
-                    <p class="addresessLabel">Адреса:</p>
-                    <p class="address">Ул. Зиповская, 7</p>
-                    <p class="address">Ул. Российская, 100</p>
-                    <p class="address">Ул. Красная, 12</p>
-                </div>
+            <div id="addresses">
+                <h2 id="addresessLabel">Адреса магазинов:</h2>
             </div>
         </div>
     </div>
     <div id="footerContainer"></div>
 </body>
 
+<script src="../js/modules/m_shop.js"></script>
 <script src="../js/pages/shops.js"></script>
 <script src="../js/main.js"></script>
 

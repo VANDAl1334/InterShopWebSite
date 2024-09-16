@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>InterShop | Оформление заказа</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/pages/order-creation.css" />
+    <link rel="icon" href="../icons/favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+
+    <div id="headerContainer"></div>
+
+    <div id="content">
+        <h1>Оформление заказа</h1>
+        <h3>Состав заказа</h3>
+        <table id="orderComposition">
+            <th>Товар</th>
+            <th>Количество</th>
+            <th>Стоимость</th>
+            <th>Сумма</th>
+        </table>
+        <p id="orderTotalCost"></p>
+        <div id="orderDetails">
+            <div>
+                <p>Тип доставки:</p>
+                <select id="orderDeliveryTypes"></select>
+            </div>
+            <div>
+                <p id="orderShopLabel">Точка выдачи:</p>
+                <select id="orderShops"></select>
+
+                <p id="orderAddressLabel">Адрес доставки:</p>
+                <input id="orderAddresses"></input>
+            </div>
+            <div>
+                <p>Примерная дата доставки:</p>
+                <p id="orderDeliveryDate"></p>
+            </div>
+            <div>
+                <p>Вид оплаты:</p>
+                <select id="orderPaymentTypes"></select>
+            </div>
+            <button id="orderCreateOrder">Оформить заказ</button>
+        </div>
+    </div>
+
+    <div id="footerContainer"></div>
+
+</body>
+
+<script src="../js/modules/m_shop.js"></script>
+<script src="../js/modules/m_basket.js"></script>
+<script src="../js/modules/m_order.js"></script>
+<script src="../js/pages/order-creation.js"></script>
+<script src="../js/main.js"></script>
+
+</html>

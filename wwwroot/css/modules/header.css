@@ -14,7 +14,7 @@ header {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     flex-wrap: wrap;
 }
 
@@ -27,8 +27,9 @@ header {
     margin: 10px;
 }
 
-.header-actions a {
+.header-actions p {
     font-size: 16px;
+    margin: 0px;
 }
 
 .header-actions .btn:hover {
@@ -36,10 +37,9 @@ header {
 }
 
 .up-level a {
-    margin: 0;
     align-self: center;
     color: black;
-    margin: 10px;
+    margin: 0px 10px;
 }
 
 .logo {
@@ -64,6 +64,7 @@ header {
     justify-content: space-between;
     flex-wrap: nowrap;
     width: 100%;
+    margin: 30px;
 }
 
 .down-level {
@@ -74,14 +75,20 @@ header {
     width: 100%;
 }
 
+.down-level div {
+    display: flex;
+    align-self: center;
+}
+
 #btn_search {
     background-image: url(../../icons/Search.png);
     background-size: contain;
     background-repeat: no-repeat;
     width: 40px;
     height: 40px;
-    margin: 0px;
-    border-radius: 15px;
+    margin: 0px 5px;
+    border-radius: 10px;
+    border: 1px solid #bbb;
 }
 
 #tb_search {
@@ -89,6 +96,7 @@ header {
     height: 40px;
     margin: 0px;
     padding: 15px;
+    border-radius: 10px;
 }
 
 .header-button {
@@ -115,11 +123,18 @@ header {
 
 .header-button img {
     align-self: center;
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
 }
 
 #divFromHeader {
     margin-top: 170px;
     width: 70%;
+}
+
+#runningString {
+    position: absolute;
+    margin: 0px;
+    left: 12px;
+    font-size: 12px;
 }

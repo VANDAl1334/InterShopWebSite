@@ -237,7 +237,7 @@ document.getElementById("btnPutComment").addEventListener("click", async e => {
         location.reload();
     }
     else {
-        alert("При отправлении отзыва произошла ошибка!");
+        ParseError(response, true);
         console.log("Comment add: status " + response.status);
     }
 });
