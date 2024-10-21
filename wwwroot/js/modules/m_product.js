@@ -56,6 +56,10 @@ async function getFavouriteProducts(detailInfo = false) {
     if (response.ok) {
         result = await response.json();
     }
+    else
+    {
+        
+    }
 
     return result;
 }

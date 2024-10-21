@@ -193,12 +193,14 @@ async function postOrder(order)
     if (response.ok)
     {
         alert("Заказ оформлен!");
-        return response.json();
+        return true;
     }
     else
     {
         console.log(`[m_order] status: ${response.status}`);
         ParseError(response);
+
+        return false
     }
 }
 

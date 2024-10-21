@@ -16,6 +16,18 @@ async function main() {
 
     const content = document.getElementById("content");
 
+    if(products.length == 0)
+    {
+        const noResults = document.createElement("h2");
+        noResults.innerHTML = "Товары не найдены";
+        noResults.setAttribute("id", "errorMessage");
+
+        content.style.alignContent = "center";
+        content.appendChild(noResults);
+
+        return;
+    }
+
     const resultLabel = document.createElement("label");
     resultLabel.innerHTML = "Результаты поиска:";
     content.appendChild(resultLabel);

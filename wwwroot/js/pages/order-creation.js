@@ -6,8 +6,12 @@ async function main() {
         return;
     }
 
-    let order;
     basket = await getBasket();
+    if(basket.length == 0)
+    {
+        location.href = `${location.origin}/catalog`;
+        return;
+    }
 
     const orderComposition = document.getElementById("orderComposition");
 
@@ -124,13 +128,22 @@ async function main() {
             });
         });
 
-        postOrder({
+        const result = await postOrder({
             paymentType: paymentType,
             deliveryType: deliveryType,
             deliveryAddress: deliveryAddress,
             deliveryDate: deliveryDate,
             orderDetails: orderDetails
         });
+
+        if(result)
+        {
+            location.href = `${location.origin}/orders`;
+        }
+        else
+        {
+            alert("При добавлении заказа произошла ошибка!");
+        }
     });
 }
 

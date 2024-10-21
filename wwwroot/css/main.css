@@ -50,6 +50,7 @@ h2 {
 
 h3 {
     font-size: 22px;
+    margin: 0px;
 }
 
 form {
@@ -243,4 +244,9 @@ th {
     padding: 10px;
     border: 1px solid rgb(134, 134, 134);
     background-color: #f0f0f0;
+}
+
+#errorMessage {
+    color: #9b9b9b;
+    margin: auto;
 }

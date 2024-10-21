@@ -8,12 +8,26 @@ async function main()
         $("#popupContainer").load("../../popup.html");
 
         const content = document.getElementById("content");
-        const label = document.createElement("label");
-        label.innerHTML = "Избранное";
-        content.appendChild(label);
+        
 
         let favouriteProductsId = await getFavouriteProducts(false);
         let favouriteProducts = await getFavouriteProducts(true);
+
+        if(favouriteProducts.length == 0)
+    {
+        const noResults = document.createElement("h2");
+        noResults.innerHTML = "Список избранных товаров пуст :(";
+        noResults.setAttribute("id", "errorMessage");
+
+        content.style.alignContent = "center";
+        content.appendChild(noResults);
+
+        return;
+    }
+        const label = document.createElement("h1");
+        label.innerHTML = "Избранное";
+        content.appendChild(label);
+        
         const productList = await createProductList(favouriteProducts, favouriteProductsId);
         content.appendChild(productList);
     }

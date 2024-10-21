@@ -9,7 +9,7 @@ async function main()
 
     const root = document.getElementById("content");
 
-    const discountLabel = document.createElement("label");
+    const discountLabel = document.createElement("h3");
     discountLabel.innerHTML = "Акции";
     const discounts = await getProducts("", 0, true);
     const discountsList = await createProductList(discounts, favouriteProductsId);
@@ -18,7 +18,7 @@ async function main()
 
     for(let i = 0; i < 2; i++)
     {
-        const categoryLabel = document.createElement("label");
+        const categoryLabel = document.createElement("h3");
         categoryLabel.innerHTML = categories[i];
         root.appendChild(categoryLabel);
         // Загрузка секций с товарами определённой категории
